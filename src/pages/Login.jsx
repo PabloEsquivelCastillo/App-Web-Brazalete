@@ -1,0 +1,79 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
+import { jwtDecode } from 'jwt-decode';
+import '../css/Login.css';
+
+function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Correo electrónico inválido')
+      .required('El correo electrónico es requerido'),
+    password: Yup.string()
+      .min(6, 'La contraseña debe tener al menos 6 caracteres')
+      .required('La contraseña es requerida'),
+  });
+
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    try {
+      const response = await axios.post('http://localhost:3000/login', values);
+      const token = response.data.token;
+      login(token);
+
+      const decodedToken = jwtDecode(token);
+      const userRole = decodedToken.rol;
+
+      if (userRole === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (userRole === 'cuidador') {
+        navigate('/cuidador/dashboard');
+      } else {
+        setErrors({ form: 'Rol no válido' });
+      }
+    } catch (err) {
+      setErrors({ form: 'Error al iniciar sesión. Verifica tus credenciales.' });
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="login-wrapper">
+      <div className="login-container">
+        <div className="login-form">
+          <h1 className='login-title'>Inicia sesión</h1>
+          <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={handleSubmit}>
+            {({ isSubmitting, errors }) => (
+              <Form>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Correo electrónico</label>
+                  <Field type="email" name="email" className="form-control" placeholder="Ingresa tu correo" />
+                  <ErrorMessage name="email" component="div" className="text-danger" />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Contraseña</label>
+                  <Field type="password" name="password" className="form-control" placeholder="Ingresa tu contraseña" />
+                  <ErrorMessage name="password" component="div" className="text-danger" />
+                </div>
+                {errors.form && <div className="alert alert-danger">{errors.form}</div>}
+                <button type="submit" className="submit-button" disabled={isSubmitting}>
+                  {isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+        <div className="login-banner"></div>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
