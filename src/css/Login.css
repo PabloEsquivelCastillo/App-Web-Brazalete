@@ -1,0 +1,59 @@
+/* Definir colores principales */
+:root {
+    --color-primario: #70DFA7;
+    --color-secundario: #6c757d;
+    --color-fondo: #f8f9fa;
+  }
+  
+  /* Estilos generales del contenedor principal */
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-fondo);
+  }
+  
+  /* Contenedor dividido en dos partes */
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Estilos para el formulario */
+  .login-form {
+    padding: 40px;
+  }
+  
+  .login-title {
+    text-align: center;
+    color: var(--color-primario);
+    margin-bottom: 20px;
+  }
+  
+  /* Sección de color verde */
+  .login-banner {
+    background-color: var(--color-primario);
+  }
+  
+  /* Botón de envío */
+  .submit-button {
+    width: 100%;
+    background-color: var(--color-primario);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #5ac896;
+  }
+  
