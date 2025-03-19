@@ -1,59 +1,147 @@
 /* Definir colores principales */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-    --color-primario: #70DFA7;
-    --color-secundario: #6c757d;
-    --color-fondo: #f8f9fa;
-  }
-  
-  /* Estilos generales del contenedor principal */
-  .login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: var(--color-fondo);
-  }
-  
-  /* Contenedor dividido en dos partes */
+  --color-primario: #70DFA7;
+  --color-secundario: #D4D4D4;
+  --color-fondo: #ffffff;
+}
+
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secundario);
+}
+
+.container{
+  width: 1000px ;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+/*media para resposividad*/
+@media (min-width: 768px) {
   .login-container {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 60%;
-    max-width: 900px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
   }
+}
+
+
+.login-form {
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
   
-  /* Estilos para el formulario */
-  .login-form {
-    padding: 40px;
-  }
-  
-  .login-title {
-    text-align: center;
-    color: var(--color-primario);
-    margin-bottom: 20px;
-  }
-  
-  /* Sección de color verde */
-  .login-banner {
-    background-color: var(--color-primario);
-  }
-  
-  /* Botón de envío */
-  .submit-button {
-    width: 100%;
-    background-color: var(--color-primario);
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #5ac896;
-  }
-  
+}
+
+
+
+
+.login-title {
+  text-align: start;
+  color: black;
+  margin-bottom: 20px;
+}
+
+
+.form-label{
+  text-align: start;
+}
+
+.form-control {
+  width: 100%;
+  background-color: white; /* Fondo blanco */
+  border: 1px solid black !important; /* Borde negro */
+  border-radius: 5px;
+  padding: 10px;
+  color: black; /* Texto negro */
+  transition: border-color 0.3s ease;
+
+}
+
+/* Cambia el borde a verde cuando el usuario hace clic o escribe */
+.form-control:focus {
+  border-color: var(--color-primario);
+  outline: none;
+  box-shadow: 0 0 5px rgba(112, 223, 167, 0.5);
+}
+
+
+/*Contenedor del boton*/
+.button-container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.submit-button {
+  align-self: center;
+  width: 50%;
+  background-color: var(--color-primario);
+  border: none;
+  color: black;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+
+.submit-button:hover {
+  background-color: #5ac896;
+}
+
+
+
+/*parte derecha del formulario*/
+.login-banner {
+  background-color: var(--color-secundario);
+}
+
+
+/*Contenedor de los links*/
+.down {
+  display: flex;
+  flex-direction: column; /* Alinear en columna */
+  align-items: center; /* Centrar los elementos */
+  gap: 10px; /* Espaciado entre los elementos */
+}
+
+.link-group {
+  display: flex; /* Poner los dos últimos en la misma línea */
+  gap: 10px; /* Espaciado entre los enlaces */
+}
+
+.link {
+  color: black;
+  font-weight: 400;
+  opacity: 70%;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 100%;
+  color: #30ac6e;
+}
+
+.text-link{
+  color: black;
+  font-weight: 400;
+  opacity: 70%;
+  text-decoration: none;
+}
+
