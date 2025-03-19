@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 import Login from '../pages/Login';
 import { useAuth } from '../context/AuthContext';
-import MenuAdmin from '../pages/admin/MenúAdmin';
-import MenuCuidador from '../pages/cuidador/MenuCuidador';
+import MenuCuidador from '../pages/admin/CuidadoresActivos';
+import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -21,7 +21,7 @@ function AppRoutes() {
           path="/admin/dashboard"
           element={
             user?.rol === 'admin' ? ( // Verificar si el usuario es admin
-              <MenuAdmin />
+              <CuidadoresActivos/>
             ) : (
               <Navigate to="/login" /> // Redirigir al login si no es admin
             )
