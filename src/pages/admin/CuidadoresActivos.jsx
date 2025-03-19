@@ -6,6 +6,7 @@ import LateralAdmin from "../../components/LateralAdmin";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 const CuidadoresActivos = () => {
@@ -13,6 +14,7 @@ const CuidadoresActivos = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const index = 0;
+    const navigate = useNavigate();
 
     useEffect(() => {
         const cargarCuidadores = async () => {
@@ -28,6 +30,12 @@ const CuidadoresActivos = () => {
 
         cargarCuidadores();
     }, []);
+
+
+
+    const handleEdit = (id) => {
+        navigate(`/editar/${id}`)
+    }
 
     // Función para manejar la desactivación de un cuidador
     const handleDeactivate = async (id) => {
@@ -72,7 +80,7 @@ const CuidadoresActivos = () => {
                                 <td>{cuidador.email}</td>
                                 <td>{cuidador.phone}</td>
                                 <td>
-                                    <button className="btn btn-update" >
+                                    <button className="btn btn-update" onClick={() => handleEdit(cuidador._id)}>
                                         <FaRegEdit />
                                     </button>
                                     <button className="btn btn-delete"  onClick={() => handleDeactivate(cuidador._id)}>
