@@ -27,3 +27,13 @@ export const deactivateCuidador = async (id) => {
 
 
 //Actualizar Cuidador
+
+export const actualizarCuidador = async (id, data) => {
+    try{
+        const response = await axiosInstance.put(`/api/users/${id}`, data)
+        return response.data;
+    } catch (error) {
+        console.error('Error al actualizar el cuidador: ', error);
+        throw error;
+    }
+}
