@@ -6,7 +6,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import '../../css/SolicitudesPendientes.css'
-
+import { aceptarSolicitud } from "../../Logica/FuncionesAdmin";
 
 const Solicitudes = () => {
   const [rows, setRows] = useState([]);
@@ -29,7 +29,7 @@ const Solicitudes = () => {
 
       if (Array.isArray(response.data)) {
         const formattedRows = response.data.map((item, index) => ({
-          id: index + 1,
+            id: item._id,
           name: item.name,
           email: item.email,
           phone: item.phone,
@@ -77,7 +77,7 @@ const Solicitudes = () => {
                 <td>{row.email}</td>
                 <td>{row.phone}</td>
                 <td>
-                  <button className="btn btn-primary me-2">
+                  <button className="btn btn-primary me-2" onClick={()=> aceptarSolicitud(row.id)}>
                     <FaRegEdit />
                   </button>
                   <button className="btn btn-danger" >
