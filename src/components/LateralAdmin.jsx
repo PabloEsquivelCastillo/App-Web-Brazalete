@@ -1,13 +1,18 @@
 import '../css/LateralAdmin.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { User, UserCheck, Pill, BellRing } from "lucide-react"; 
+import { useNavigate } from "react-router-dom";
 
 export default function LateralAdmin() {
+
+    let navigate=useNavigate();
+
+
     return (
         <div className="sidebar">
             <ul className="nav flex-column">
             <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" onClick={() => navigate("/admin/solicitudes")}>
                 <div className="nav-content">
                     <User size={20} />
                     Solicitudes
@@ -15,7 +20,7 @@ export default function LateralAdmin() {
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" onClick={() => navigate("/admin/dashboard")}>
                 <div className="nav-content">
                     <UserCheck size={20} />
                     Cuidadores
