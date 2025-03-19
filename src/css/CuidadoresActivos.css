@@ -9,14 +9,14 @@
 
 /**/
 .table-custom {
-    margin-left: 126px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;
 }
 
-
-
+.boreder-one{
+    border-top-left-radius: 10px;
+}
 
 .border-two{
     border-top-right-radius: 10px;
@@ -26,11 +26,55 @@
 .table-custom th,
 .table-custom td {
     padding: 12px 15px;
-    /* Espaciado adecuado */
     text-align: center;
 }
 
 .table-custom th {
-    background-color: var(--color-primario);
+    background-color: var(--color-primario) !important;
     color: #3f4348;
+}
+
+
+
+/*Acciones*/
+/* Estilo para el botón de eliminar */
+.btn-delete {
+    background-color: #e5e2e2 !important; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde sutil */
+    color: #d9534f; /* Color rojo para el icono */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño del icono */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
+    transition: all 0.3s ease; /* Transición suave para el hover */
+}
+
+.btn-delete:hover {
+    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+}
+
+.btn-delete svg {
+    fill: #d9534f; /* Icono en color rojo */
+}
+
+
+
+.btn-update {
+    margin-inline: 10px;
+    background-color: #e5e2e2 !important; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde sutil */
+    color: #4fb2e1; /* Color rojo para el icono */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño del icono */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
+    transition: all 0.3s ease; /* Transición suave para el hover */
+}
+
+.btn-update :hover {
+    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+}
+
+.btn-update  svg {
+    fill: #4fb2e1; /* Icono en color rojo */
 }
