@@ -25,32 +25,6 @@ export const deactivateCuidador = async (id) => {
     }
 };
 
-export const aceptarSolicitud = async (id) => {
-    try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("❌ No hay token disponible");
-            return;
-        }
-
-        console.log("📤 Enviando solicitud para actualizar usuario con ID:", id);
-
-        const response = await axiosInstance.put(
-            `http://localhost:3000/api/users/${id}`,
-            {},  // Asegúrate de enviar un objeto (aunque sea vacío)
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-        );
-
-        console.log("✅ Respuesta de la API:", response.data);
-        return response.data;
-    } catch (error) {
-        console.error("❌ Error en la solicitud PUT:", error.response ? error.response.data : error);
-    }
-};
 
 
 
