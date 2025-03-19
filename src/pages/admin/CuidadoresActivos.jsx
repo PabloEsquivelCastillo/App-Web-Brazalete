@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCuidadores } from "../../components/CuidadorService";
 import '../../css/CuidadoresActivos.css'
+import Navbar from "../../components/Navbar";
+import LateralAdmin from "../../components/LateralAdmin";
 
 
 const CuidadoresActivos = () => {
@@ -27,13 +29,20 @@ const CuidadoresActivos = () => {
     if (loading) return <p>Cargando cuidadores...</p>; // Muestra un mensaje de carga
     if (error) return <p>Error al cargar los cuidadores: {error.message}</p>; // Muestra un mensaje de error
 
+
+
+
+
     return (
-        <div className="container">
+        <>
+                <Navbar/>
+                <LateralAdmin/>
+                <div className="container">
+            
             <table className="table table-custom">
                 <thead>
                     <tr>
-                        <th className= "border-one" scope="col">Id</th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col" className="col-name">Nombre</th>
                         <th scope="col">Correo electrónico</th>
                         <th className= "border-two" scope="col">Teléfono</th>
                     </tr>
@@ -41,7 +50,6 @@ const CuidadoresActivos = () => {
                 <tbody>
                     {cuidadores.map((cuidador) => (
                         <tr key={cuidador._id}>
-                            <td>{cuidador._id}</td>
                             <td>{cuidador.name}</td>
                             <td>{cuidador.email}</td>
                             <td>{cuidador.phone}</td>
@@ -50,6 +58,8 @@ const CuidadoresActivos = () => {
                 </tbody>
             </table>
         </div>
+        </>
+        
     );
 };
 
