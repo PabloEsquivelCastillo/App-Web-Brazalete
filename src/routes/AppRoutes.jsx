@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import { useAuth } from '../context/AuthContext';
 import MenuCuidador from '../pages/admin/CuidadoresActivos';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
+import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
 
 function AppRoutes() {
@@ -31,6 +32,17 @@ function AppRoutes() {
         <Route
         path='editar/:id'
         element={<EditarCuidador/>}/>
+
+<Route
+          path="/admin/solicitudes"
+          element={
+            user?.rol === 'admin' ? ( // Verificar si el usuario es admin
+              <Solicitudes/>
+            ) : (
+              <Navigate to="/login" /> // Redirigir al login si no es admin
+            )
+          }
+        />
 
         {/* Rutas protegidas para cuidador */}
         <Route

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Navbar.css'
-
+import logo from '../img/Logo.png';
 export default function Navbar() {
 
 
@@ -11,7 +11,10 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" >Mi Navbar</a>
+        <a className="navbar-brand" >
+        <img className= "logo"src={logo} alt="Logo" style={{ width: '100px', height: '90px' }} />
+
+        </a>
         <button 
           className="navbar-toggler" 
           type="button" 
@@ -26,8 +29,8 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
 
-            <li className="nav-item">
-              <a className="nav-link" >Contacto</a>
+            <li className="navadmin">
+              <a className="nav-link" >Administrador</a>
             </li>
           </ul>
         </div>

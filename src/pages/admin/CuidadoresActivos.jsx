@@ -61,12 +61,13 @@ const CuidadoresActivos = () => {
 
     return (
         <>
+            <Navbar></Navbar>
+            <LateralAdmin/>
             <div className="container">
                 <table className="table table-custom">
                     <thead>
                         <tr>
-                            <th className="boreder-one" scope="col" >id</th>
-                            <th scope="col" >Nombre</th>
+                            <th className="boreder-one" scope="col" >Nombre</th>
                             <th scope="col">Correo electrónico</th>
                             <th scope="col">Teléfono</th>
                             <th className="border-two" scope="col">Acciones</th>
@@ -75,7 +76,6 @@ const CuidadoresActivos = () => {
                     <tbody>
                         {cuidadores.map((cuidador) => (
                             <tr key={cuidador._id}>
-                                <td>{cuidador._id}</td>
                                 <td>{cuidador.name}</td>
                                 <td>{cuidador.email}</td>
                                 <td>{cuidador.phone}</td>

@@ -1,4 +1,5 @@
 .navbar {
+    background-color: white !important;
     position: fixed;  
     top: 0;  
     width: 100%; 
@@ -9,4 +10,13 @@
 .navbar-brand {
     font-weight: bold;
     color: #007bff;
+}
+
+.logo {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.navadmin {
+    margin-left: 1200px;
 }
