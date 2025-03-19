@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import { useAuth } from '../context/AuthContext';
 import MenuCuidador from '../pages/admin/CuidadoresActivos';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
+import EditarCuidador from '../pages/admin/EditarCuidador';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -27,6 +28,9 @@ function AppRoutes() {
             )
           }
         />
+        <Route
+        path='editar/:id'
+        element={<EditarCuidador/>}/>
 
         {/* Rutas protegidas para cuidador */}
         <Route
