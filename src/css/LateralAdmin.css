@@ -1,0 +1,37 @@
+.sidebar {
+    position: fixed; 
+    top: 88px;
+    left: 0;
+    width: 250px; 
+    height: 100vh; 
+    background-color: #ffffff; 
+    padding-top: 20px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.sidebar .nav-link {
+    display: block; 
+    width: 100%;
+    text-decoration: none;
+}
+
+.sidebar .nav-content {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-weight: bold;
+    padding: 20px 20px;
+    width: 100%;
+    border-radius: 10px; 
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar .nav-link:hover .nav-content {
+    background-color: #70DFA7; 
+    padding-left: 40px; 
+    padding-right: 40px; 
+}
+
+.sidebar .nav-content svg {
+    margin-right: 15px; 
+}
