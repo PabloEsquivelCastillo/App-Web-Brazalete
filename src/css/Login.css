@@ -8,16 +8,16 @@
 
 
 #root {
-  width: 100vw;
+  width: 100vh;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-secundario);
+  background-color: var(--color-fondo);
 }
 
 .container{
-  width: 1000px ;
+  width: 100vh ;
 }
 
 .login-container {
