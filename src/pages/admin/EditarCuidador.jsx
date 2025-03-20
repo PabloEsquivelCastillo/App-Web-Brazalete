@@ -53,12 +53,11 @@ const EditarCuidador = () => {
     }, [id]);
 
     const handleSubmit = async ( values) => {
-        //traemos de axios el metodo para editar 
         try{
             await actualizarCuidador(id, values);
             console.log(values);
             toast.success("Cuidador actualizado correctamente")
-            navigate('/cuidadoresActivos')
+            navigate(`/admin/cuidadoresActivos`)
         }catch (error) {
             console.error("Error al actualizar el cuidador:" , error);
             toast.error("Error al actualizar el cuidador")
