@@ -6,8 +6,8 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-import MenuCuidador from '../pages/cuidador/MenuCuidador';
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
+import Registro from '../pages/Registro';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -17,6 +17,7 @@ function AppRoutes() {
       <Routes>
         {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
+        <Route path="/registro" element={<Registro/>}></Route>
 
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (
@@ -28,10 +29,7 @@ function AppRoutes() {
           </>
         )}
 
-        {/* Rutas protegidas para cuidador */}
-        {user?.rol === 'cuidador' && (
-          <Route path="/cuidador/dashboard" element={<MenuCuidador />} />
-        )}
+
 
         {/* Redirigir si la ruta no existe o el usuario no tiene permisos */}
         <Route path="*" element={<Navigate to="/" />} />

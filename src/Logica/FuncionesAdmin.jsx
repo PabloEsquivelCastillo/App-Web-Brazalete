@@ -30,23 +30,6 @@ export const deactivateCuidador = async (id) => {
     }
 };
 
-<<<<<<< HEAD
-// Registrar usuario
-
-export const registrarUser = async (id) => {
-    try{
-        const response = await axiosInstance.post(`/api/users`);
-        return response.data;
-    } catch (error) {
-        console.error('Error registrando al usuario', error);
-        throw error;
-    }
-
-}
-=======
-
-
-
 //Actualizar Cuidador
 export const actualizarCuidador = async (id, data) => {
     try{
@@ -103,4 +86,3 @@ export const rechazarSolicitud = async (id) => {
 
 
 
->>>>>>> origin/juan-dev
