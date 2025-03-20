@@ -6,28 +6,43 @@
     --color-fondo: #ffffff;
 }
 
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    max-width: 80%; /* Reduce el ancho del contenido */
+}
 
+/* Responsive: Eliminar margen si la sidebar se oculta */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        max-width: 100%;
+    }
+}
 
+/* Estilos de la tabla */
 .table-custom {
-    margin-left: 127px;
+    width: 80%; /* Reduce el ancho de la tabla */
+    max-width: 800px; /* Evita que sea demasiado grande */
+    margin: auto; /* Centra la tabla */
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;
 }
 
-.boreder-one{
+.boreder-one {
     border-top-left-radius: 10px;
 }
 
-.border-two{
+.border-two {
     border-top-right-radius: 10px;
 }
 
-
-
 .table-custom td {
+    max-width: 300px; /* Reduce aún más el ancho */
     padding: 12px 15px;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .table-custom th {
@@ -35,47 +50,43 @@
     color: #3f4348;
 }
 
-
-
-/*Acciones*/
 /* Estilo para el botón de eliminar */
 .btn-delete {
-    background-color: #e5e2e2 !important; /* Fondo blanco */
-    border: 1px solid #ddd; /* Borde sutil */
-    color: #d9534f; /* Color rojo para el icono */
-    padding: 10px 15px; /* Espaciado interno */
-    font-size: 18px; /* Tamaño del icono */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
-    transition: all 0.3s ease; /* Transición suave para el hover */
+    background-color: #e5e2e2 !important;
+    border: 1px solid #ddd;
+    color: #d9534f;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
 }
 
 .btn-delete:hover {
-    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+    opacity: 0.8;
 }
 
 .btn-delete svg {
-    fill: #d9534f; /* Icono en color rojo */
+    fill: #d9534f;
 }
 
-
-
+/* Estilo para el botón de actualizar */
 .btn-update {
     margin-inline: 10px;
-    background-color: #e5e2e2 !important; /* Fondo blanco */
-    border: 1px solid #ddd; /* Borde sutil */
-    color: #4fb2e1; /* Color rojo para el icono */
-    padding: 10px 15px; /* Espaciado interno */
-    font-size: 18px; /* Tamaño del icono */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
-    transition: all 0.3s ease; /* Transición suave para el hover */
+    background-color: #e5e2e2 !important;
+    border: 1px solid #ddd;
+    color: #4fb2e1;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease;
 }
 
-.btn-update :hover {
-    opacity: 0.8; /* Reduce la opacidad al pasar el ratón */
+.btn-update:hover {
+    opacity: 0.8;
 }
 
-.btn-update  svg {
-    fill: #4fb2e1; /* Icono en color rojo */
+.btn-update svg {
+    fill: #4fb2e1;
 }
