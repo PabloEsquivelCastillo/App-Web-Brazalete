@@ -1,3 +1,8 @@
-import React from "react";
+import React from 'react';
+import '../css/Registro.css' ;
 
-//Formulario de registro con yup
+function Registro() {
+
+}
+
+export default Registro;

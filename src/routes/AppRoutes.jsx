@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import MenuCuidador from '../pages/admin/CuidadoresActivos';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
+import Registro from '../pages/Registro';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -51,6 +52,8 @@ function AppRoutes() {
             )
           }
         />
+
+        <Route path='/registro' element={<Registro></Registro>}></Route>
       </Routes>
     </Router>
   );
