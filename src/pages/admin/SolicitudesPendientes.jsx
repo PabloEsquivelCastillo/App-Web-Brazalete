@@ -29,32 +29,33 @@ const SolicitudesPendientes = () => {
 
 
   const handleAccept = (id) => {
-      if (window.confirm("Aceptart solicitud de ser cuidador")) {
-          try {
-            aceptarSolicitudes(id);
-            const updateSolis = solicitudes.filter(solicitud => solicitud._id !== id);
-            setSolicitudes(updateSolis);
-          } catch (error) {
-             console.error("Erro: ", error);
-            toast.error("Error ");
-          }
+    if (window.confirm("Aceptart solicitud de ser cuidador")) {
+      try {
+        aceptarSolicitudes(id);
+        const updateSolis = solicitudes.filter(solicitud => solicitud._id !== id);
+        setSolicitudes(updateSolis);
+      } catch (error) {
+        console.error("Erro: ", error);
+        toast.error("Error ");
       }
+    }
   };
 
   const handleDenny = (id) => {
-      if (window.confirm("Rechazar Solicitud")) {
-          try {
-            rechazarSolicitud(id);
-            const updateSolis = solicitudes.filter(solicitud => solicitud._id !== id);
-            setSolicitudes(updateSolis);
-          } catch (error) {
-             console.error("Erro: ", error);
-            toast.error("Error ");
-          }
+    if (window.confirm("Rechazar Solicitud")) {
+      try {
+        rechazarSolicitud(id);
+        const updateSolis = solicitudes.filter(solicitud => solicitud._id !== id);
+        setSolicitudes(updateSolis);
+      } catch (error) {
+        console.error("Erro: ", error);
+        toast.error("Error ");
       }
+    }
+
   };
 
-
+  const index = 0;
   if (loading) return <p>Cargando solicitudes...</p>;
   if (error) return <p>Error al cargar las solicitudes: {error.message}</p>;
 
@@ -62,33 +63,36 @@ const SolicitudesPendientes = () => {
     <>
       <div className="container mt-4">
         <h1 className="title">Solicitudes Pendientes</h1>
-        <table className="table table-custom">
+        <table className="table-custom">
           <thead>
             <tr>
-              <th className="boreder-one" scope="col">Nombre</th>
-              <th scope="col">Correo Electrónico</th>
-              <th scope="col">Teléfono</th>
-              <th className="border-two" scope="col">Acciones</th>
+              <th className="boreder-one">#</th>
+              <th>Nombre</th>
+              <th>Correo Electrónico</th>
+              <th>Teléfono</th>
+              <th className="border-two">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {solicitudes.map((solicitud) => (
+            {solicitudes.map((solicitud, index) => (
               <tr key={solicitud._id}>
+                <td>{index + 1}</td>
                 <td>{solicitud.name}</td>
                 <td>{solicitud.email}</td>
                 <td>{solicitud.phone}</td>
-                <td>
-                  <button className="btn btn-primary me-2" onClick={() => handleAccept(solicitud._id)} >
-                    <FaCheck />
+                <td className="container-button">
+                  <button className="btn btn-accept" onClick={() => handleAccept(solicitud._id)}>
+                    <FaCheck /> Aceptar
                   </button>
-                  <button className="btn btn-danger" onClick={() => handleDenny(solicitud._id)} >
-                    <RiCloseLargeFill />
+                  <button className="btn btn-reject" onClick={() => handleDenny(solicitud._id)}>
+                    <RiCloseLargeFill /> Rechazar
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
       </div>
     </>
   );
