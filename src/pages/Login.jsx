@@ -31,8 +31,8 @@ function Login() {
 
       if (userRole === 'admin') {
         navigate('/admin/dashboard');
-      } else if (userRole === 'cuidador') {
-        navigate('/cuidador/dashboard');
+      } else if (userRole === 'keeper') {
+        navigate('/cuidador/perfil');
       } else {
         setErrors({ form: 'Rol no válido' });
       }
@@ -40,6 +40,7 @@ function Login() {
       setErrors({ form: 'Error al iniciar sesión. Verifica tus credenciales.' });
       console.error(err);
     } finally {
+      
       setSubmitting(false);
     }
   };

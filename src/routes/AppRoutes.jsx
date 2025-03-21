@@ -8,6 +8,10 @@ import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
 import Registro from '../pages/Registro';
+import Perfil from '../pages/cuidador/Perfil';
+import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
+import Brazalete from '../pages/cuidador/Brazaletes';
+import Recordatorios from '../pages/cuidador/Recordatorios';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -29,7 +33,15 @@ function AppRoutes() {
           </>
         )}
 
-
+       {/* Rutas protegidas para cuidador */}
+       {user?.rol === 'keeper' && (
+          <>
+            <Route path="/cuidador/perfil" element={<Perfil />} />
+            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador />} />
+            <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
+            <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
+          </>
+        )}   
 
         {/* Redirigir si la ruta no existe o el usuario no tiene permisos */}
         <Route path="*" element={<Navigate to="/" />} />

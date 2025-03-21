@@ -8,7 +8,7 @@
 
 .title {
     color: black;
-
+    margin-right: 600px;
 }
 
 .container {
@@ -16,7 +16,6 @@
     margin-top: 20px;
 }
 
-/* Tabla personalizada */
 .table-custom {
     margin-top: 30px;
     border-radius: 10px;
@@ -43,7 +42,6 @@
     border-top-right-radius: 10px;
 }
 
-/* Estilos para las acciones */
 .btn-delete, .btn-update {
     background-color: #e5e2e2 !important;
     border: 1px solid #ddd;
@@ -79,7 +77,6 @@
     fill: #fff;
 }
 
-/* Estilos adicionales para el título */
 h1 {
     color: var(--color-primario);
     font-size: 2rem;
