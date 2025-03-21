@@ -60,6 +60,7 @@ const SolicitudesPendientes = () => {
 
   return (
     <>
+      <Navbar></Navbar>
       <div className="container mt-4">
         <h1 className="title">Solicitudes Pendientes</h1>
         <table className="table table-custom">
