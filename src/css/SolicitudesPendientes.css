@@ -9,7 +9,7 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: red !important;
+
     color: var(--color-texto);
 }
 
@@ -56,9 +56,6 @@ h1.title {
 }
 
 /* Alternar color de filas */
-.table-custom tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
 
 
 /* Bordes redondeados en esquinas superiores */
@@ -91,19 +88,27 @@ h1.title {
 }
 
 /* Botón aceptar */
-.btn-accept {
+.first-btn {
     color: black;
 }
 
-.btn-accept:hover {
+.first-btn:hover {
     color: green;
 }
 
-/* Botón rechazar */
-.btn-reject {
+.btn-up{
     color: black;
 }
 
-.btn-reject:hover {
+.btn-up:hover {
+    color: blue;
+}
+
+/* Botón rechazar */
+.second-btn {
+    color: black;
+}
+
+.second-btn:hover {
     color: red;
 }

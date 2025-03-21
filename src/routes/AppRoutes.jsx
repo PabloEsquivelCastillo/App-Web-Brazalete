@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-import MenuCuidador from '../pages/cuidador/MenuCuidador';
+import MenuCuidador from '../pages/cuidador/MenúAdmin';
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
 
 function AppRoutes() {
@@ -21,7 +21,7 @@ function AppRoutes() {
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (
           <>
-            <Route path="/admin/dashboard" element={<SolicitudesPendientes />} />
+            <Route path="/admin/dashboard" element={<CuidadoresActivos />} />
             <Route path="/admin/cuidadoresActivos" element={<CuidadoresActivos />} />
             <Route path="/admin/solicitudes" element={<Solicitudes />} />
             <Route path="/admin/editar/:id" element={<EditarCuidador />} />
