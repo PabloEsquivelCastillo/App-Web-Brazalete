@@ -1,47 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
     --color-primario: #70DFA7;
     --color-secundario: #D4D4D4;
     --color-fondo: #ffffff;
+    --color-texto: #333;
 }
 
+<<<<<<< HEAD
 .title {
     color: black;
     margin-right: 600px;
 }
 
 .container {
+=======
+body {
+>>>>>>> origin/juan-dev
     font-family: "Poppins", sans-serif;
-    margin-top: 20px;
+    background-color: red !important;
+    color: var(--color-texto);
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Título alineado a la izquierda */
+h1.title {
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 .table-custom {
-    margin-top: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Encabezados */
 .table-custom th {
-    background-color: var(--color-primario) !important;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
+    background-color: var(--color-primario);
+    color: black;
+    text-align: left;
+    font-weight: 500;
+    padding: 12px;
 }
 
+/* Celdas */
 .table-custom td {
-    padding: 12px 15px;
-    text-align: center;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-secundario);
 }
 
+/* Alternar color de filas */
+.table-custom tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Bordes redondeados en esquinas superiores */
 .table-custom .boreder-one {
-    border-top-left-radius: 10px;
+    border-top-left-radius: 8px;
 }
 
 .table-custom .border-two {
-    border-top-right-radius: 10px;
+    border-top-right-radius: 8px;
 }
 
+<<<<<<< HEAD
 .btn-delete, .btn-update {
     background-color: #e5e2e2 !important;
     border: 1px solid #ddd;
@@ -49,26 +86,43 @@
     font-size: 18px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+=======
+/* Estilos de botones */
+.btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+>>>>>>> origin/juan-dev
     transition: all 0.3s ease;
-    color: #fff;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
-.btn-delete {
-    background-color: #d9534f !important;
+
+.container-button{
+
 }
 
-.btn-delete:hover {
-    opacity: 0.8;
+/* Botón aceptar */
+.btn-yes {
+    color: black;
 }
 
-.btn-delete svg {
-    fill: #fff;
+.btn-yes:hover {
+    color: green;
 }
 
-.btn-update {
-    background-color: #5bc0de !important;
+/* Botón rechazar */
+.btn-not {
+    color: black;
 }
 
+<<<<<<< HEAD
 .btn-update:hover {
     opacity: 0.8;
 }
@@ -83,4 +137,8 @@ h1 {
     font-weight: 600;
     text-align: center;
     margin-bottom: 20px;
+=======
+.btn-not:hover {
+    color: red;
+>>>>>>> origin/juan-dev
 }

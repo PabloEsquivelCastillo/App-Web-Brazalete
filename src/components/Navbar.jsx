@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a className="navbar-brand" >
-        <img className= "logo"src={logo} alt="Logo" style={{ width: '100px', height: '90px' }} />
+        <img className= "logo"src={logo} alt="Logo" style={{ width: '60px', height: '50px' }} />
 
         </a>
         <button 

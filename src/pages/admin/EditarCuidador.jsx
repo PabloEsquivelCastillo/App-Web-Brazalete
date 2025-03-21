@@ -6,7 +6,7 @@ import axiosInstance from "../../api/axiosConfig";
 import { actualizarCuidador } from "../../Logica/FuncionesAdmin";
 import { toast } from "react-toastify";
 
-import '../../css/Login.css'
+import '../../css/EditarCuidador.css';
 
 
 
