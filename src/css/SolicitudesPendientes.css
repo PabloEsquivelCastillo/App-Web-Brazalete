@@ -91,19 +91,19 @@ h1.title {
 }
 
 /* Botón aceptar */
-.btn-accept {
+.btn-yes {
     color: black;
 }
 
-.btn-accept:hover {
+.btn-yes:hover {
     color: green;
 }
 
 /* Botón rechazar */
-.btn-reject {
+.btn-not {
     color: black;
 }
 
-.btn-reject:hover {
+.btn-not:hover {
     color: red;
 }
