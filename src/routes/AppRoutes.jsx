@@ -12,6 +12,7 @@ import Perfil from '../pages/cuidador/Perfil';
 import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
 import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
+import Recuperar from '../pages/Recuperar';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -22,6 +23,8 @@ function AppRoutes() {
         {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Registro/>}></Route>
+        <Route path="/recuperar" element={<Recuperar/>}></Route>
+
 
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (

@@ -76,10 +76,10 @@ function Login() {
                 </div>
                 <hr className=" border-dark border-1 opacity-50" />
                 <div className='down'>
-                  <a className='link' href='#'>Olvidé mi contraseña</a>
+                  <a className='link' onClick={()=> navigate("/recuperar")}>Olvidé mi contraseña</a>
                   <div className='link-group'>
                     <a className='text-link'>¿No tienes cuenta?</a>
-                    <a className='link' href='#'>Crear ahora</a>
+                    <a className='link' onClick={()=> navigate("/registro")}>Crear ahora</a>
                   </div>
                 </div>
               </Form>
