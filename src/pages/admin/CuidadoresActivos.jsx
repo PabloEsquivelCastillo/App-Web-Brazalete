@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getCuidadores, deactivateCuidador } from "../../Logica/FuncionesAdmin";
-import '../../css/CuidadoresActivos.css';
-import Navbar from "../../components/Navbar";
-import LateralAdmin from "../../components/LateralAdmin";
+
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";  // Importa ToastContainer
@@ -54,33 +52,37 @@ const CuidadoresActivos = () => {
     return (
         <>
             <ToastContainer position="top-right" autoClose={3000} /> {/* Contenedor de notificaciones */}
-            <table className="table table-custom">
-                <thead>
-                    <tr>
-                        <th className="boreder-one" scope="col">Nombre</th>
-                        <th scope="col">Correo electrónico</th>
-                        <th scope="col">Teléfono</th>
-                        <th className="border-two" scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cuidadores.map((cuidador) => (
-                        <tr key={cuidador._id}>
-                            <td>{cuidador.name}</td>
-                            <td>{cuidador.email}</td>
-                            <td>{cuidador.phone}</td>
-                            <td>
-                                <button className="btn btn-update" onClick={() => handleEdit(cuidador._id)}>
-                                    <FaRegEdit />
-                                </button>
-                                <button className="btn btn-delete" onClick={() => handleDeactivate(cuidador._id)}>
-                                    <MdDeleteOutline />
-                                </button>
-                            </td>
+            <div className="container">
+                <h1 className="title">Cuidadores</h1>
+                <table className="table-custom">
+                    <thead>
+                        <tr>
+                            <th className="boreder-one">Nombre</th>
+                            <th>Correo electrónico</th>
+                            <th>Teléfono</th>
+                            <th className="border-two">Acciones</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {cuidadores.map((cuidador) => (
+                            <tr key={cuidador._id}>
+                                <td>{cuidador.name}</td>
+                                <td>{cuidador.email}</td>
+                                <td>{cuidador.phone}</td>
+                                <td className="container-button">
+                                    <button className="btn btn-yes" onClick={() => handleEdit(cuidador._id)}>
+                                        <FaRegEdit /> Editar
+                                    </button>
+                                    <button className="btn btn-not   " onClick={() => handleDeactivate(cuidador._id)}>
+                                        <MdDeleteOutline /> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
         </>
     );
 };

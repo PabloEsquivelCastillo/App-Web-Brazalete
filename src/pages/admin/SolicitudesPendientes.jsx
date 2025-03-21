@@ -81,10 +81,10 @@ const SolicitudesPendientes = () => {
                 <td>{solicitud.email}</td>
                 <td>{solicitud.phone}</td>
                 <td className="container-button">
-                  <button className="btn btn-accept" onClick={() => handleAccept(solicitud._id)}>
+                  <button className="btn btn-yes" onClick={() => handleAccept(solicitud._id)}>
                     <FaCheck /> Aceptar
                   </button>
-                  <button className="btn btn-reject" onClick={() => handleDenny(solicitud._id)}>
+                  <button className="btn btn-not" onClick={() => handleDenny(solicitud._id)}>
                     <RiCloseLargeFill /> Rechazar
                   </button>
                 </td>
