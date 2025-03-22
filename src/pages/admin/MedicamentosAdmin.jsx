@@ -20,7 +20,7 @@ const MedicamentosAdmin = () => {
     const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         const cargarMedicamentos = () => {
@@ -81,27 +81,25 @@ const MedicamentosAdmin = () => {
     return (
         <>
             <LateralAdmin />
-            <Container  fluid className="mt-4 d-flex justify-content-center">
+            <Container fluid className=" d-flex ">
                 <div className="contenedor">
                     {/* Botón "Añadir Medicamento" */}
-                    <Row className="mb-3 ">
+                    <Row className="mb-3  header-content">
+                        <Col>
+                            <h1 className="title">Medicamentos</h1>
+                        </Col>
                         <Col>
                             <Button
                                 variant="success"
                                 onClick={() => navigate("/admin/RegistrarMedicamento")}
                                 className="d-flex align-items-center gap-2 add-medicamento-btn"
-                                style={{height:"50px"}}
+                                style={{ height: "50px" }}
                             >
-                                <img src={iconMed} alt="Mi Icono" style={{ width: '30px', height: '30px', opacity:"revert" }} />
+                                <img src={iconMed} alt="Mi Icono" style={{ width: '30px', height: '30px', opacity: "revert" }} />
                                 Añadir Medicamento
                             </Button>
                         </Col>
-                    </Row>
-                    {/* Título */}
-                    <Row className="mb-3">
-                        <Col>
-                            <h1 className="title">Medicamentos</h1>
-                        </Col>
+
                     </Row>
 
 

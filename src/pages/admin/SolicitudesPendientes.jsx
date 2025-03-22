@@ -16,7 +16,7 @@ const SolicitudesPendientes = () => {
     const [error, setError] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         const cargarCuidadores = async () => {
@@ -92,7 +92,7 @@ const SolicitudesPendientes = () => {
             <Container fluid className="mt-4 d-flex justify-content-center">
                 <div className="contenedor">
                     {/* Título */}
-                    <Row className="mb-3">
+                    <Row className="mb-3 header-content">
                         <Col>
                             <h1 className="title">Solicitudes Pendientes</h1>
                         </Col>
