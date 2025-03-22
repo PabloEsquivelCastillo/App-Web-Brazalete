@@ -5,15 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../api/axiosConfig";
 import { actualizarCuidador } from "../../Logica/FuncionesAdmin";
 import { toast } from "react-toastify";
-<<<<<<< HEAD
-
-import '../../css/EditarCuidador.css';
-=======
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import { Container, Row, Col, Form as BootstrapForm, Button, Alert } from 'react-bootstrap';
 import '../../css/Login.css';
->>>>>>> origin/juan-dev
 
 const EditarCuidador = () => {
     const { id } = useParams();

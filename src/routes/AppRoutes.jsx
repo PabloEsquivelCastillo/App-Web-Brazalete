@@ -6,22 +6,16 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-<<<<<<< HEAD
-import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
+import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
+import Medicamentos from '../pages/admin/MedicamentosAdmin';
+import EditarMedicamento from '../pages/admin/EditarMedicamento';
 import Registro from '../pages/Registro';
+import Recuperar from '../pages/Recuperar';
 import Perfil from '../pages/cuidador/Perfil';
 import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
 import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
-import Recuperar from '../pages/Recuperar';
 import Contraseña from '../pages/cuidador/Contraseña';
-=======
-import MenuCuidador from '../pages/cuidador/MenúAdmin';
-import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
-import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
-import Medicamentos from '../pages/admin/MedicamentosAdmin';
-import EditarMedicamento from '../pages/admin/EditarMedicamento';
->>>>>>> origin/juan-dev
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -53,8 +47,8 @@ function AppRoutes() {
        {/* Rutas protegidas para cuidador */}
        {user?.rol === 'keeper' && (
           <>
-            <Route path="/cuidador/perfil" element={<Perfil />} />
-            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador />} />
+            <Route path="/cuidador/perfil" element={<Perfil/>} />
+            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador/>} />
             <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
             <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
             <Route path="/cuidador/Contraseña" element={<Contraseña/>} />

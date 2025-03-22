@@ -83,45 +83,8 @@ const SolicitudesPendientes = () => {
         return items;
     };
 
-<<<<<<< HEAD
-  return (
-    <>
-      <Navbar></Navbar>
-      <div className="container mt-4">
-        <h1 className="title">Solicitudes Pendientes</h1>
-        <table className="table-custom">
-          <thead>
-            <tr>
-              <th className="boreder-one">#</th>
-              <th>Nombre</th>
-              <th>Correo Electrónico</th>
-              <th>Teléfono</th>
-              <th className="border-two">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {solicitudes.map((solicitud, index) => (
-              <tr key={solicitud._id}>
-                <td>{index + 1}</td>
-                <td>{solicitud.name}</td>
-                <td>{solicitud.email}</td>
-                <td>{solicitud.phone}</td>
-                <td className="container-button">
-                  <button className="btn btn-yes" onClick={() => handleAccept(solicitud._id)}>
-                    <FaCheck /> Aceptar
-                  </button>
-                  <button className="btn btn-not" onClick={() => handleDenny(solicitud._id)}>
-                    <RiCloseLargeFill /> Rechazar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-=======
     if (loading) return <p className="mt-4 d-flex justify-content-center">Cargando solicitudes...</p>;
     if (error) return <p className="mt-4 d-flex justify-content-center">Error al cargar las solicitudes: {error.message}</p>;
->>>>>>> origin/juan-dev
 
     return (
         <>

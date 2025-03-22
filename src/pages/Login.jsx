@@ -30,10 +30,11 @@ function Login() {
       const edoUser = decodedToken.edo; // Estado del usuario (true o false)
 
       // Verificar si el usuario está activo
-      if (!edoUser) {
-        setErrors({ form: 'Usuario dado de baja. Contacta al administrador.' });
+      if (edoUser === "false") {
+        setErrors({ form: "Usuario dado de baja. Contacta al administrador." });
         return;
       }
+      
 
       login(token); // Guardar el token en el contexto de autenticación
 
@@ -107,14 +108,6 @@ function Login() {
                     {isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
                   </Button>
                 </div>
-<<<<<<< HEAD
-                <hr className=" border-dark border-1 opacity-50" />
-                <div className='down'>
-                  <a className='link' onClick={()=> navigate("/recuperar")}>Olvidé mi contraseña</a>
-                  <div className='link-group'>
-                    <a className='text-link'>¿No tienes cuenta?</a>
-                    <a className='link' onClick={()=> navigate("/registro")}>Crear ahora</a>
-=======
 
                 {/* Enlaces Inferiores */}
                 <hr className="my-4" />
@@ -122,8 +115,7 @@ function Login() {
                   <a href="#" className="link">Olvidé mi contraseña</a>
                   <div className="link-group mt-2">
                     <span className="text-link">¿No tienes cuenta?</span>
-                    <a href="#" className="link ms-1">Crear ahora</a>
->>>>>>> origin/juan-dev
+                    <a onClick={()=> navigate("/registro")} className="link ms-1">Crear ahora</a>
                   </div>
                 </div>
               </Form>

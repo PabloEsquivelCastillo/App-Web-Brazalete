@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getCuidadores, deactivateCuidador } from "../../Logica/FuncionesAdmin";
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/juan-dev
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";  // Importa ToastContainer
@@ -55,40 +51,6 @@ const CuidadoresActivos = () => {
 
     return (
         <>
-<<<<<<< HEAD
-            <ToastContainer position="top-right" autoClose={3000} /> {/* Contenedor de notificaciones */}
-            <div className="container">
-                <h1 className="title">Cuidadores</h1>
-                <table className="table-custom">
-                    <thead>
-                        <tr>
-                            <th className="boreder-one">Nombre</th>
-                            <th>Correo electrónico</th>
-                            <th>Teléfono</th>
-                            <th className="border-two">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cuidadores.map((cuidador) => (
-                            <tr key={cuidador._id}>
-                                <td>{cuidador.name}</td>
-                                <td>{cuidador.email}</td>
-                                <td>{cuidador.phone}</td>
-                                <td className="container-button">
-                                    <button className="btn btn-yes" onClick={() => handleEdit(cuidador._id)}>
-                                        <FaRegEdit /> Editar
-                                    </button>
-                                    <button className="btn btn-not   " onClick={() => handleDeactivate(cuidador._id)}>
-                                        <MdDeleteOutline /> Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-
-=======
 
             <LateralAdmin />
             <Container fluid className="mt-4 d-flex justify-content-center">
@@ -146,7 +108,6 @@ const CuidadoresActivos = () => {
                     </Row>
                 </div>
             </Container>
->>>>>>> origin/juan-dev
         </>
     );
 };
