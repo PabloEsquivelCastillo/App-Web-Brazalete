@@ -8,6 +8,9 @@ import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
 import MenuCuidador from '../pages/cuidador/MenúAdmin';
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
+import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
+import Medicamentos from '../pages/admin/MedicamentosAdmin';
+import EditarMedicamento from '../pages/admin/EditarMedicamento';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -18,6 +21,8 @@ function AppRoutes() {
         {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
 
+
+
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (
           <>
@@ -25,6 +30,9 @@ function AppRoutes() {
             <Route path="/admin/cuidadoresActivos" element={<CuidadoresActivos />} />
             <Route path="/admin/solicitudes" element={<Solicitudes />} />
             <Route path="/admin/editar/:id" element={<EditarCuidador />} />
+            <Route path="/admin/Medicamentos" element={<Medicamentos />} />
+            <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
+            <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
           </>
         )}
 
