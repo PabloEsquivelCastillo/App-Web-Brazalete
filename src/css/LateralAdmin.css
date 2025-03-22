@@ -10,6 +10,7 @@
 }
 
 
+
 .sidebar {
     font-family: "Poppins", sans-serif !important;
     font-size: 15px;
@@ -62,13 +63,10 @@
     border-color: transparent !important;
     font-size: large !important;
     color: black !important;
+    font-size: large !important;
+    margin-top: 8px;
+    font-weight: 400 !important;
 }
-
-.dropdown:hover{
-    color: var(--color-primario) !important;
-}
-
-
 
 
 @media (max-height : 695px) {
@@ -80,5 +78,57 @@
 @media (max-height : 550px) {
     .sidebar .nav-content {
         margin-top: 10px;
+    }
+}
+
+
+
+
+/*Navbar*/
+/* Estilos para la navbar en pantallas pequeñas */
+/* Estilos para la navbar en pantallas pequeñas */
+/* Estilos para la navbar en pantallas pequeñas */
+.mobile-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    font-family: "Poppins", sans-serif;
+    z-index: 1000;
+
+}
+
+/* Estilos para el botón de toggle */
+.mobile-navbar .navbar-toggler {
+    border: none;
+    padding: 8px;
+    display: none; /* Oculta el botón de toggle por defecto */
+}
+
+
+
+/* Estilos para los enlaces del menú */
+.mobile-navbar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #333;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.mobile-navbar .nav-link:hover {
+    color: var(--color-primario);
+}
+
+
+@media (max-width: 780px) {
+    .mobile-navbar .nav-link{
+        font-size: small !important;
+        align-items: center;
+        flex-direction: column;
+    }
+    #basic-navbar-nav{
+       justify-content: start;
     }
 }

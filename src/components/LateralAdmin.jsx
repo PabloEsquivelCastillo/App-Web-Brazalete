@@ -1,9 +1,9 @@
 import '../css/LateralAdmin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { User, UserCheck, Pill, BellRing, Menu } from "lucide-react"; 
+import { User, UserCheck, Pill, BellRing, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Dropdown, Navbar, Container } from "react-bootstrap";
+import { Dropdown, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
 export default function LateralAdmin() {
     let navigate = useNavigate();
@@ -26,36 +26,39 @@ export default function LateralAdmin() {
                 // Navbar en pantallas pequeñas 📱
                 <Navbar expand="lg" className="mobile-navbar">
                     <Container>
-                        <Navbar.Brand href="#">Admin</Navbar.Brand>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Opciones
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => navigate("/admin/solicitudes")}>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar id="basic-navbar-nav">
+                            <Nav className="me-auto justify-content-center">
+                                <Nav.Link onClick={() => navigate("/admin/solicitudes")}>
                                     <User size={20} /> Solicitudes
-                                </Dropdown.Item>
-                                <Dropdown.Item onClick={() => navigate("/admin/dashboard")}>
+                                </Nav.Link>
+                                <Nav.Link onClick={() => navigate("/admin/dashboard")}>
                                     <UserCheck size={20} /> Cuidadores
-                                </Dropdown.Item>
-                                <Dropdown.Item onClick={() => navigate("/admin/Medicamentos")}>
+                                </Nav.Link>
+                                <Nav.Link onClick={() => navigate("/admin/Medicamentos")}>
                                     <Pill size={20} /> Medicamentos
-                                </Dropdown.Item>
-                                <Dropdown.Item href="#">
+                                </Nav.Link>
+                                <Nav.Link href="#">
                                     <BellRing size={20} /> Recordatorios
-                                </Dropdown.Item>
-                                <Dropdown.Divider />
-                                <Dropdown.Item onClick={() => navigate("/logout")}>
-                                    Cerrar sesión
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                                </Nav.Link>
+                                <Dropdown className="admin-dropdown" drop="start">
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
+                                        Admin
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item className='logout' onClick={() => navigate("/logout")}>
+                                            Cerrar sesión
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Nav>
+                        </Navbar>
                     </Container>
                 </Navbar>
             ) : (
                 // Sidebar en pantallas grandes 🖥️
                 <div className="sidebar">
-                    <Dropdown className="admin-dropdown"  drop="end">
+                    <Dropdown className="admin-dropdown" drop="end">
                         <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
                             Admin
                         </Dropdown.Toggle>
