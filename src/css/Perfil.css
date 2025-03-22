@@ -1,0 +1,81 @@
+.perfil-container {
+    margin-top: 100px;
+    margin-left: 200px;
+    background: white;
+    padding: 0; /* Se elimina el padding general para que el header quede pegado */
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    width: 700px;
+    height: 650px; /* Se aumentó la altura para mayor separación */
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Evita que el contenido sobresalga */
+}
+
+.perfil-header {
+    background-color: #6ed39b;
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    border-radius: 0; /* Elimina el borde redondeado para que quede pegado */
+}
+
+.perfil-label {
+    display: block;
+    text-align: left;
+    margin: 20px 15% 8px; /* Se alinea con los inputs */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.perfil-input {
+    width: 70%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 18px;
+    background: white;
+    color: black;
+    outline: none;
+    display: block;
+    margin: 0 auto 30px; /* Se agrega más margen inferior */
+}
+
+.perfil-input:focus {
+    border-color: #6ed39b;
+    box-shadow: 0 0 8px rgba(110, 211, 155, 0.5);
+}
+
+.perfil-button {
+    width: 50%;
+    background-color: #6ed39b;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 50px; /* Se aumentó la separación */
+    transition: background 0.3s ease-in-out;
+}
+
+.perfil-button:hover {
+    background-color: #5bb686;
+}
+
+.perfil-link {
+    display: block;
+    margin-top: 40px; /* Se aumentó aún más la separación */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.perfil-link:hover {
+    text-decoration: underline;
+}

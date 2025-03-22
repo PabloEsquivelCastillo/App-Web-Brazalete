@@ -1,34 +1,33 @@
 import '../css/LateralCuidador.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Profile, UserCheck, Pill, BellRing } from "lucide-react"; 
+import { User, Watch, Pill, BellRing } from "lucide-react"; 
 import { useNavigate } from "react-router-dom";
 
-export default function LateralAdmin() {
+export default function LateralCuidador() {
 
     let navigate=useNavigate();
-
 
     return (
         <div className="sidebar">
             <ul className="nav flex-column">
             <li className="nav-item">
-                <a className="nav-link" onClick={() => navigate("/admin/solicitudes")}>
+                <a className="nav-link" onClick={() => navigate("/cuidador/perfil")}>
                 <div className="nav-content">
-                    <Profile size={20} />
-                    Solicitudes
+                    <User size={20} />
+                    Perfil
                 </div>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" onClick={() => navigate("/admin/dashboard")}>
+                <a className="nav-link" onClick={() => navigate("/cuidador/Brazaletes")}>
                 <div className="nav-content">
-                    <UserCheck size={20} />
-                    Cuidadores
+                    <Watch size={20} />
+                    Brazaletes
                 </div>
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" onClick={() => navigate("/cuidador/Medicamentos")}>
                 <div className="nav-content">
                     <Pill size={20} />
                     Medicamentos
@@ -36,7 +35,7 @@ export default function LateralAdmin() {
                 </a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" onClick={() => navigate("/cuidador/Recordatorios")}>
                 <div className="nav-content">
                     <BellRing size={20} />
                     Recordatorios

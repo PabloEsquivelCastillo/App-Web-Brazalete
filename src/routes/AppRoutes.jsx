@@ -13,6 +13,7 @@ import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
 import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
 import Recuperar from '../pages/Recuperar';
+import Contraseña from '../pages/cuidador/Contraseña';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -43,6 +44,8 @@ function AppRoutes() {
             <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador />} />
             <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
             <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
+            <Route path="/cuidador/Contraseña" element={<Contraseña/>} />
+
           </>
         )}   
 

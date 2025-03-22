@@ -8,11 +8,6 @@ import { toast } from "react-toastify";
 
 import '../../css/EditarCuidador.css';
 
-
-
-
-
-
 const EditarCuidador = () => {
 
     const { id } = useParams();
