@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
+<<<<<<< HEAD
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
 import Registro from '../pages/Registro';
 import Perfil from '../pages/cuidador/Perfil';
@@ -14,6 +15,13 @@ import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
 import Recuperar from '../pages/Recuperar';
 import Contraseña from '../pages/cuidador/Contraseña';
+=======
+import MenuCuidador from '../pages/cuidador/MenúAdmin';
+import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
+import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
+import Medicamentos from '../pages/admin/MedicamentosAdmin';
+import EditarMedicamento from '../pages/admin/EditarMedicamento';
+>>>>>>> origin/juan-dev
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -27,13 +35,18 @@ function AppRoutes() {
         <Route path="/recuperar" element={<Recuperar/>}></Route>
 
 
+
+
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (
           <>
-            <Route path="/admin/dashboard" element={<SolicitudesPendientes />} />
+            <Route path="/admin/dashboard" element={<CuidadoresActivos />} />
             <Route path="/admin/cuidadoresActivos" element={<CuidadoresActivos />} />
             <Route path="/admin/solicitudes" element={<Solicitudes />} />
             <Route path="/admin/editar/:id" element={<EditarCuidador />} />
+            <Route path="/admin/Medicamentos" element={<Medicamentos />} />
+            <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
+            <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
           </>
         )}
 

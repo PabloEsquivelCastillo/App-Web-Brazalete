@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --color-primario: #70DFA7;
+    --color-primario-fuerte: hsl(150, 52%, 59%);
+    --color-primario-claro: hsl(150, 71%, 76%);
+    --color-secundario: #D4D4D4;
+    --color-fondo: #ffffff;
+    --color-texto: #333;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Contenedor de la tabla */
+.table-responsive {
+    max-width: 800px; /* Ancho máximo de la tabla */
+    margin: 0 auto; /* Centrar la tabla */
+
+}
+
+/* Estilos para la tabla */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+/* Encabezados de la tabla */
+.table-custom th {
+    background-color: var(--color-primario);
+    color: black;
+    text-align: left;
+    font-weight: 500;
+    padding: 8px 10px; /* Padding más pequeño */
+    
+}
+
+/* Celdas de la tabla */
+.table-custom td {
+    padding: 6px 10px; /* Padding más pequeño */
+    text-align: left;
+    border-bottom: 1px solid var(--color-secundario);
+    border-color: #d0cbcb;
+    
+}
+
+/* Alternar color de filas */
+.table-custom tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover */
+.table-custom tbody tr:hover {
+    background-color: #eaeaea !important;
+}
+
+/* Bordes redondeados en esquinas superiores */
+.table-custom .boreder-one {
+    border-top-left-radius: 8px;
+}
+
+.table-custom .border-two {
+    border-top-right-radius: 8px;
+}
+
+/* Estilos de botones */
+button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    color: rgb(92, 32, 32) !important;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+
+
+
+
+
+/*Vista de medicamentos*/
+
+.contenedor{
+    width: 70%;
+    padding-left: 15vh;
+}
+
+
+
+/*Solicitudes Pendientes*/
+.btn-rechazar,
+.btn-aceptar{
+    color: black !important;
+}
+
+.btn-aceptar:hover {
+    color: green !important;
+}
+
+.btn-rechazar:hover{
+    color: red !important;
+}
+
+
+
+
+
+
+/*Boton agregar meds*/
+
+
+.add-medicamento-btn{
+    background-color: var(--color-primario);
+    border: none;
+    color: var(--color-texto) !important;
+    justify-self: end ;
+}
+
+.add-medicamento-btn:hover{
+    background-color: var(--color-primario-claro);
+}
+
+/* Estilos base para ambos botones */
+/* Estilos para los botones de editar y eliminar */
+.btn-editar,
+.btn-eliminar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.btn-editar .btn-text,
+.btn-editar svg {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.btn-editar:hover .btn-text,
+.btn-editar:hover svg {
+    color: rgb(0, 0, 255);
+}
+
+.btn-eliminar .btn-text,
+.btn-eliminar svg {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.btn-eliminar:hover .btn-text,
+.btn-eliminar:hover svg {
+    color: rgb(255, 0, 0);
+}
