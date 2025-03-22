@@ -9,14 +9,20 @@
     --color-texto: #333;
 }
 
+.title{
+    font-size: x-large;
+}
+
+
+
 body {
     font-family: "Poppins", sans-serif;
 }
 
 /* Contenedor de la tabla */
 .table-responsive {
-    max-width: 800px; /* Ancho máximo de la tabla */
-    margin: 0 auto; /* Centrar la tabla */
+    max-width: 100%; /* Ancho máximo de la tabla */
+    overflow-x: auto ;
 
 }
 
@@ -91,10 +97,65 @@ button {
 /*Vista de medicamentos*/
 
 .contenedor{
-    width: 70%;
-    padding-left: 15vh;
+    width: calc(100% - 350px);
+    margin-left: 250px;
+    padding: 20px;
+    min-height: 100vh;
+}
+.header-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-top: 30px;
+    align-items: end;
+    gap: 20px;
 }
 
+@media (max-width: 925px) {
+    .header-content {
+        display:flex;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .header-content h1 {
+        margin-top: 20vh;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .add-medicamento-btn {
+        width: 80%;
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 925px) {
+    .contenedor {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        margin-left: 0; /* Elimina el margen izquierdo */
+        padding: 10px; /* Reduce el padding */
+    }
+
+    .table-responsive {
+        overflow-x: auto; /* Permite el desplazamiento horizontal en pantallas pequeñas */
+    }
+}
+
+/*Boton agregar meds*/
+
+
+.add-medicamento-btn{
+    background-color: var(--color-primario);
+    border: none;
+    color: var(--color-texto) !important;
+    justify-self: end ;
+}
+
+.add-medicamento-btn:hover{
+    background-color: var(--color-primario-claro);
+}
 
 
 /*Solicitudes Pendientes*/
@@ -116,19 +177,7 @@ button {
 
 
 
-/*Boton agregar meds*/
 
-
-.add-medicamento-btn{
-    background-color: var(--color-primario);
-    border: none;
-    color: var(--color-texto) !important;
-    justify-self: end ;
-}
-
-.add-medicamento-btn:hover{
-    background-color: var(--color-primario-claro);
-}
 
 /* Estilos base para ambos botones */
 /* Estilos para los botones de editar y eliminar */
