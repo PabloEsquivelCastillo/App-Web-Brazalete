@@ -22,3 +22,4 @@ npm install react-icons
 npm install formik yup
 npm install lucide-react
 npm install react-toastify
+npm install react-bootstrap
