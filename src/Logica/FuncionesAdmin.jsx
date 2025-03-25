@@ -30,9 +30,6 @@ export const deactivateCuidador = async (id) => {
     }
 };
 
-
-
-
 //Actualizar Cuidador
 export const actualizarCuidador = async (id, data) => {
     try{

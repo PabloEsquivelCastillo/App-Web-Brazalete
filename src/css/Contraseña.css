@@ -1,0 +1,70 @@
+.update-password-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  
+  .update-password-card {
+    padding: 3rem;
+    background-color: white;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.2);
+    border: 1px solid rgba(0, 255, 127, 0.3);
+  }
+  
+  .update-password-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .update-password-subtitle {
+    color: #6c757d;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .update-password-input-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  
+  .update-password-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .update-password-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .update-password-button-container {
+    margin-top: 2rem;
+  }
+  
+  .update-password-button {
+    background-color: #50c878;
+    border: none;
+    font-size: 18px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .update-password-button:hover {
+    background-color: #3aa460;
+    transform: scale(1.05);
+  }
+  

@@ -3,21 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext'; // Usamos el contexto de autenticación
 import { jwtDecode } from 'jwt-decode';
 import { Container, Row, Col, Form as BootstrapForm, Button, Alert } from 'react-bootstrap';
 import '../css/Login.css';
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // Función login del contexto
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email('Correo electrónico inválido')
       .required('El correo electrónico es requerido'),
     password: Yup.string()
-      .min(1, 'La contraseña debe tener al menos 6 caracteres')
+      .min(6, 'La contraseña debe tener al menos 6 caracteres')
       .required('La contraseña es requerida'),
   });
 
@@ -25,9 +25,20 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3000/login', values);
       const token = response.data.token;
+
+      if (!token) {
+        setErrors({ form: 'Token no recibido. Intenta de nuevo.' });
+        return;
+      }
+
+      // Guarda el token en el contexto de autenticación
+      login(token);
+
+      // Decodifica el token
       const decodedToken = jwtDecode(token);
       const userRole = decodedToken.rol;
       const edoUser = decodedToken.edo; // Estado del usuario (true o false)
+      const edoReq = decodedToken.edoReq;
 
       // Verificar si el usuario está activo
       if (!edoUser) {
@@ -35,13 +46,16 @@ function Login() {
         return;
       }
 
-      login(token); // Guardar el token en el contexto de autenticación
+      if (Number(edoReq) === 0) {
+        setErrors({ form: 'Espera a que el administrador acepte tu solicitud' });
+        return;
+      }
 
       // Redirigir según el rol del usuario
       if (userRole === 'admin') {
         navigate('/admin/dashboard');
-      } else if (userRole === 'cuidador') {
-        navigate('/cuidador/dashboard');
+      } else if (userRole === 'keeper') {
+        navigate('/cuidador/perfil');
       } else {
         setErrors({ form: 'Rol no válido' });
       }
@@ -110,10 +124,10 @@ function Login() {
                 {/* Enlaces Inferiores */}
                 <hr className="my-4" />
                 <div className="down text-center">
-                  <a href="#" className="link">Olvidé mi contraseña</a>
+                  <a onClick={() => navigate("/recuperar")} className="link">Olvidé mi contraseña</a>
                   <div className="link-group mt-2">
                     <span className="text-link">¿No tienes cuenta?</span>
-                    <a href="#" className="link ms-1">Crear ahora</a>
+                    <a onClick={() => navigate("/registro")} className="link ms-1">Crear ahora</a>
                   </div>
                 </div>
               </Form>

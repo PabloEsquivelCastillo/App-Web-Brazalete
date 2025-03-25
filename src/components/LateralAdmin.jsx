@@ -19,8 +19,15 @@ export default function LateralAdmin() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    // Función para cerrar sesión eliminando el token
+    const handleLogout = () => {
+        // Eliminar el token del localStorage o sessionStorage
+        localStorage.removeItem("token"); // O sessionStorage.removeItem("token");
+        // Redirigir a la página de login o principal
+        navigate("/login");
+    };
 
-    //React boostrap alv, este si sireve
+    //React boostrap alv, este si sirve
     //.
     return (
         <>

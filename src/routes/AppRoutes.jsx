@@ -6,21 +6,32 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-import Recordatorios from '../pages/admin/RecordatoriosAdmin';
-import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
 import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
 import Medicamentos from '../pages/admin/MedicamentosAdmin';
 import EditarMedicamento from '../pages/admin/EditarMedicamento';
+import Registro from '../pages/Registro';
+import Recuperar from '../pages/Recuperar';
+import Perfil from '../pages/cuidador/Perfil';
+import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
+import Brazalete from '../pages/cuidador/Brazaletes';
+import Recordatorios from '../pages/cuidador/Recordatorios';
+import Contraseña from '../pages/cuidador/Contraseña';
+import RestablecerPassword from '../pages/resetPassword';
+import EditarMedicamentoCuidador from '../pages/cuidador/EditarMedicamento';
+import RegistrarMedicamentoCuidador from '../pages/cuidador/RegistrarMedicamentos';
+import RecordatoriosAdmin from '../pages/admin/RecordatoriosAdmin';
 
 function AppRoutes() {
-  const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
+  const { user } = useAuth(); 
 
   return (
     <Router>
       <Routes>
         {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
-
+        <Route path="/registro" element={<Registro/>}></Route>
+        <Route path="/recuperar" element={<Recuperar/>}></Route>
+        <Route path='/reset-password/:token' element={<RestablecerPassword/>}/>
 
 
         {/* Rutas protegidas para admin */}
@@ -33,14 +44,26 @@ function AppRoutes() {
             <Route path="/admin/Medicamentos" element={<Medicamentos />} />
             <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
             <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
-            <Route path="/admin/Recordatorios" element={<Recordatorios />} />
+            <Route path="/admin/Recordatorios" element={<RecordatoriosAdmin/>} />
+            
           </>
         )}
 
-        {/* Rutas protegidas para cuidador */}
-        {user?.rol === 'cuidador' && (
-          <Route path="/cuidador/dashboard" element={<MenuCuidador />} />
-        )}
+       {/* Rutas protegidas para cuidador */}
+       {user?.rol === 'keeper' && (
+          <>
+            <Route path="/cuidador/perfil" element={<Perfil/>} />
+            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador/>} />
+            <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
+            <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
+            <Route path="/cuidador/Contraseña" element={<Contraseña/>} />
+            <Route path="/cuidador/editar/:id" element={<EditarCuidador />} />
+            <Route path="/cuidador/Medicamentos" element={<Medicamentos />} />
+            <Route path="/cuidador/RegistrarMedicamento" element={<RegistrarMedicamentoCuidador />} />
+            <Route path="/cuidador/EditarMedicamento/:id" element={<EditarMedicamentoCuidador />} />
+
+          </>
+        )}   
 
         {/* Redirigir si la ruta no existe o el usuario no tiene permisos */}
         <Route path="*" element={<Navigate to="/" />} />

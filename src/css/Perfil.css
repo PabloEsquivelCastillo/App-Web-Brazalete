@@ -1,0 +1,126 @@
+
+.perfil-container {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 0;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    min-height: 600px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.perfil-header {
+    background-color: #6ed39b;
+    padding: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.perfil-label {
+    display: block;
+    text-align: left;
+    margin: 20px 0 8px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.perfil-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 18px;
+    background: white;
+    color: black;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.perfil-input:focus {
+    border-color: #6ed39b;
+    box-shadow: 0 0 8px rgba(110, 211, 155, 0.5);
+}
+
+.perfil-button {
+    width: 70%;
+    background-color: #6ed39b !important;
+    border: none !important;
+    padding: 15px !important;
+    border-radius: 12px !important;
+    font-size: 18px !important;
+    cursor: pointer;
+    font-weight: bold !important;
+    margin-top: 40px;
+    transition: background 0.3s ease-in-out;
+}
+
+.perfil-button:hover {
+    background-color: #5bb686 !important;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+    .perfil-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .perfil-header {
+        font-size: 22px;
+        padding: 15px;
+    }
+    
+    .perfil-label {
+        font-size: 16px;
+        margin: 15px 0 5px;
+    }
+    
+    .perfil-input {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .perfil-button {
+        width: 90%;
+        padding: 12px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .perfil-container {
+        margin-top: 60px;
+        border-radius: 10px;
+    }
+    
+    .perfil-header {
+        font-size: 20px;
+        padding: 12px;
+    }
+    
+    .perfil-input {
+        padding: 10px;
+    }
+    
+    .perfil-button {
+        width: 100%;
+    }
+}
+
+/* Handling the sidebar layout */
+@media (min-width: 992px) {
+    .perfil-container {
+        margin-left: 200px;
+    }
+}
