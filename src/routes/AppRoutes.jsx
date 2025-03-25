@@ -17,9 +17,12 @@ import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
 import Contraseña from '../pages/cuidador/Contraseña';
 import RestablecerPassword from '../pages/resetPassword';
+import EditarMedicamentoCuidador from '../pages/cuidador/EditarMedicamento';
+import RegistrarMedicamentoCuidador from '../pages/cuidador/RegistrarMedicamentos';
+import RecordatoriosAdmin from '../pages/admin/RecordatoriosAdmin';
 
 function AppRoutes() {
-  const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
+  const { user } = useAuth(); 
 
   return (
     <Router>
@@ -41,6 +44,8 @@ function AppRoutes() {
             <Route path="/admin/Medicamentos" element={<Medicamentos />} />
             <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
             <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
+            <Route path="/admin/Recordatorios" element={<RecordatoriosAdmin/>} />
+            
           </>
         )}
 
@@ -52,6 +57,10 @@ function AppRoutes() {
             <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
             <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
             <Route path="/cuidador/Contraseña" element={<Contraseña/>} />
+            <Route path="/cuidador/editar/:id" element={<EditarCuidador />} />
+            <Route path="/cuidador/Medicamentos" element={<Medicamentos />} />
+            <Route path="/cuidador/RegistrarMedicamento" element={<RegistrarMedicamentoCuidador />} />
+            <Route path="/cuidador/EditarMedicamento/:id" element={<EditarMedicamentoCuidador />} />
 
           </>
         )}   

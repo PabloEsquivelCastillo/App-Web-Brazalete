@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Recordatorios () {
+export default function RecordatoriosCuidador () {
     return(
         <div></div>
     )

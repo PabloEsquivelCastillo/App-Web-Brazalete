@@ -38,7 +38,7 @@ const MedicamentosCuidador = () => {
     }, []);
 
     const handleEdit = (id) => {
-        navigate(`/admin/EditarMedicamento/${id}`)
+        navigate(`/cuidador/EditarMedicamento/${id}`)
         console.log("Editar medicamento con ID:", id);
     };
 
@@ -48,7 +48,6 @@ const MedicamentosCuidador = () => {
         setMedicamentos(actualizarLista);
     };
 
-    // Paginación
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentMedicamentos = medicamentos.slice(indexOfFirstItem, indexOfLastItem);
@@ -91,7 +90,7 @@ const MedicamentosCuidador = () => {
                         <Col>
                             <Button
                                 variant="success"
-                                onClick={() => navigate("/admin/RegistrarMedicamento")}
+                                onClick={() => navigate("/cuidador/RegistrarMedicamento")}
                                 className="d-flex align-items-center gap-2 add-medicamento-btn"
                                 style={{ height: "50px" }}
                             >
@@ -103,7 +102,6 @@ const MedicamentosCuidador = () => {
                     </Row>
 
 
-                    {/* Tabla */}
                     <Row>
                         <Col>
                             <div className="table-responsive">
@@ -148,7 +146,6 @@ const MedicamentosCuidador = () => {
                         </Col>
                     </Row>
 
-                    {/* Paginación */}
                     <Container fluid>
                         <Row>
                             <Col className="d-flex justify-content-end">
