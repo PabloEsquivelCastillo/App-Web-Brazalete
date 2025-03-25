@@ -2,18 +2,22 @@ import React, { useEffect, useState } from "react";
 import { getCuidadores, deactivateCuidador } from "../../Logica/FuncionesAdmin";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-import { toast, ToastContainer } from "react-toastify";  // Importa ToastContainer
-import "react-toastify/dist/ReactToastify.css"; // Importa los estilos de react-toastify
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import LateralAdmin from "../../components/LateralAdmin";
 import { Container, Row, Col, Table, Pagination, Button } from 'react-bootstrap';
-
+import Navbar from "../../components/Navbar";
 
 const CuidadoresActivos = () => {
     const [cuidadores, setCuidadores] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+
+    // Paginación
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(10);
 
     useEffect(() => {
         const cargarCuidadores = async () => {
@@ -32,12 +36,12 @@ const CuidadoresActivos = () => {
 
     const handleEdit = (id) => {
         navigate(`/admin/editar/${id}`);
-    }
+    };
 
     const handleDeactivate = async (id) => {
         try {
             await deactivateCuidador(id);
-            const updatedCuidadores = cuidadores.filter(cuidador => cuidador._id !== id); //Actualizar lista
+            const updatedCuidadores = cuidadores.filter(cuidador => cuidador._id !== id); // Actualizar lista
             setCuidadores(updatedCuidadores);
             toast.success("Cuidador eliminado correctamente");
         } catch (error) {
@@ -46,12 +50,39 @@ const CuidadoresActivos = () => {
         }
     };
 
+    // Lógica de paginación
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentCuidadores = cuidadores.slice(indexOfFirstItem, indexOfLastItem);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(cuidadores.length / itemsPerPage);
+
+    const renderPaginationItems = () => {
+        let items = [];
+        for (let number = 1; number <= totalPages; number++) {
+            items.push(
+                <Pagination.Item
+                    key={number}
+                    active={number === currentPage}
+                    onClick={() => handlePageChange(number)}
+                >
+                    {number}
+                </Pagination.Item>
+            );
+        }
+        return items;
+    };
+
     if (loading) return <p className="mt-4 d-flex justify-content-center">Cargando cuidadores...</p>;
     if (error) return <p className="mt-4 d-flex justify-content-center">Error al cargar los cuidadores: {error.message}</p>;
 
     return (
         <>
-
+            <Navbar/>
             <LateralAdmin />
             <Container fluid className="mt-4 d-flex justify-content-center">
                 <div className="contenedor">
@@ -76,7 +107,7 @@ const CuidadoresActivos = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {cuidadores.map((cuidador) => (
+                                        {currentCuidadores.map((cuidador) => (
                                             <tr key={cuidador._id}>
                                                 <td>{cuidador.name}</td>
                                                 <td>{cuidador.email}</td>
@@ -106,8 +137,32 @@ const CuidadoresActivos = () => {
                             </div>
                         </Col>
                     </Row>
+
+                    {/* Paginación */}
+                    <Row >
+                        <Col className="d-flex justify-content-end">
+                            <Pagination className="custom-pagination">
+                                <Pagination.Prev
+                                    onClick={() => handlePageChange(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                    className="page-link"
+                                >
+                                    Anterior
+                                </Pagination.Prev>
+                                {renderPaginationItems()}
+                                <Pagination.Next
+                                    onClick={() => handlePageChange(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                    className="page-link"
+                                >
+                                    Siguiente
+                                </Pagination.Next>
+                            </Pagination>
+                        </Col>
+                    </Row>
                 </div>
             </Container>
+            <ToastContainer />
         </>
     );
 };

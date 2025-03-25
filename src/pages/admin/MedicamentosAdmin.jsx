@@ -11,6 +11,7 @@ import "../../css/Tablas.css";
 import "../../css/Paginacion.css";
 import LateralAdmin from "../../components/LateralAdmin";
 import iconMed from '../../assets/iconMed.svg';
+import Navbar from "../../components/Navbar";
 
 
 const MedicamentosAdmin = () => {
@@ -20,7 +21,7 @@ const MedicamentosAdmin = () => {
     const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(8);
 
     useEffect(() => {
         const cargarMedicamentos = () => {
@@ -80,6 +81,7 @@ const MedicamentosAdmin = () => {
 
     return (
         <>
+            <Navbar />
             <LateralAdmin />
             <Container fluid className=" d-flex ">
                 <div className="contenedor">
@@ -149,8 +151,7 @@ const MedicamentosAdmin = () => {
                     </Row>
 
                     {/* Paginación */}
-                    <Container fluid>
-                        <Row>
+                        <Row >
                             <Col className="d-flex justify-content-end">
                                 <Pagination className="custom-pagination">
                                     <Pagination.Prev
@@ -171,7 +172,6 @@ const MedicamentosAdmin = () => {
                                 </Pagination>
                             </Col>
                         </Row>
-                    </Container>
                 </div>
             </Container>
         </>
