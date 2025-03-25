@@ -31,59 +31,10 @@ export default function LateralAdmin() {
     return (
         <>
             {isMobile ? (
-<<<<<<< HEAD
-                // Navbar en pantallas pequeñas 📱
-                <Navbar expand="lg" className="mobile-navbar">
-                    <Container>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar id="basic-navbar-nav">
-                            <Nav className="me-auto justify-content-center">
-                                <Nav.Link onClick={() => navigate("/admin/solicitudes")}>
-                                    <User size={20} /> Solicitudes
-                                </Nav.Link>
-                                <Nav.Link onClick={() => navigate("/admin/dashboard")}>
-                                    <UserCheck size={20} /> Cuidadores
-                                </Nav.Link>
-                                <Nav.Link onClick={() => navigate("/admin/Medicamentos")}>
-                                    <Pill size={20} /> Medicamentos
-                                </Nav.Link>
-                                <Nav.Link href="#">
-                                    <BellRing size={20} /> Recordatorios
-                                </Nav.Link>
-                                <Dropdown className="admin-dropdown" drop="start">
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
-                                        Admin
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item className='logout' onClick={handleLogout}>
-                                            Cerrar sesión
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Nav>
-                        </Navbar>
-                    </Container>
-                </Navbar>
-            ) : (
-                // Sidebar en pantallas grandes 🖥️
-                <div className="sidebar">
-                    <Dropdown className="admin-dropdown" drop="end">
-                        <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
-                            Admin
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item className='logout' onClick={handleLogout}>
-                                Cerrar sesión
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-
-=======
                     <Navbar/>
             ) : (
                 // Sidebar en pantallas grandes 🖥️
                 <div className="sidebar">
->>>>>>> origin/juan-dev
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <a className="nav-link" onClick={() => navigate("/admin/solicitudes")}>
