@@ -21,7 +21,7 @@ const MedicamentosAdmin = () => {
     const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(8);
+    const [itemsPerPage] = useState(7);
 
     useEffect(() => {
         const cargarMedicamentos = () => {

@@ -14,7 +14,7 @@ const Recordatorios = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10);
-
+    //.
     useEffect(() => {
         const cargarRecordatorios = async () => {
             obtenerRecordatorios()

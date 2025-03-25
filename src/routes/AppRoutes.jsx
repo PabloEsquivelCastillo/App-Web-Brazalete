@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-import MenuCuidador from '../pages/cuidador/MenúAdmin';
+import Recordatorios from '../pages/admin/RecordatoriosAdmin';
 import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
 import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
 import Medicamentos from '../pages/admin/MedicamentosAdmin';
@@ -33,6 +33,7 @@ function AppRoutes() {
             <Route path="/admin/Medicamentos" element={<Medicamentos />} />
             <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
             <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
+            <Route path="/admin/Recordatorios" element={<Recordatorios />} />
           </>
         )}
 

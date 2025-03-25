@@ -21,6 +21,7 @@ export default function LateralAdmin() {
 
 
     //React boostrap alv, este si sireve
+    //.
     return (
         <>
             {isMobile ? (

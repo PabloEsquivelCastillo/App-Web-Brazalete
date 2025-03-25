@@ -17,7 +17,7 @@ const SolicitudesPendientes = () => {
     const [error, setError] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(7);
 
     useEffect(() => {
         const cargarCuidadores = async () => {
@@ -69,6 +69,8 @@ const SolicitudesPendientes = () => {
     const totalPages = Math.ceil(solicitudes.length / itemsPerPage);
 
     const renderPaginationItems = () => {
+        if (totalPages <= 0) return null;
+        
         let items = [];
         for (let number = 1; number <= totalPages; number++) {
             items.push(
@@ -115,39 +117,46 @@ const SolicitudesPendientes = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {currentSolicitudes.map((solicitud, index) => (
-                                            <tr key={solicitud._id}>
-                                                <td>{indexOfFirstItem + index + 1}</td>
-                                                <td>{solicitud.name}</td>
-                                                <td>{solicitud.email}</td>
-                                                <td>{solicitud.phone}</td>
-                                                <td>
-                                                    <Button
-                                                        variant="none"
-                                                        size="sm"
-                                                        onClick={() => handleAccept(solicitud._id)}
-                                                        className="btn-aceptar"
-                                                    >
-                                                        <FaCheck /> <span className="btn-text">Aceptar</span>
-                                                    </Button>
-                                                    <Button
-                                                        variant="none"
-                                                        size="sm"
-                                                        onClick={() => handleDenny(solicitud._id)}
-                                                        className="btn-rechazar"
-                                                    >
-                                                        <RiCloseLargeFill /> <span className="btn-text">Rechazar</span>
-                                                    </Button>
-                                                </td>
+                                        {currentSolicitudes.length > 0 ? (
+                                            currentSolicitudes.map((solicitud, index) => (
+                                                <tr key={solicitud._id}>
+                                                    <td>{indexOfFirstItem + index + 1}</td>
+                                                    <td>{solicitud.name}</td>
+                                                    <td>{solicitud.email}</td>
+                                                    <td>{solicitud.phone}</td>
+                                                    <td>
+                                                        <Button
+                                                            variant="none"
+                                                            size="sm"
+                                                            onClick={() => handleAccept(solicitud._id)}
+                                                            className="btn-aceptar"
+                                                        >
+                                                            <FaCheck /> <span className="btn-text">Aceptar</span>
+                                                        </Button>
+                                                        <Button
+                                                            variant="none"
+                                                            size="sm"
+                                                            onClick={() => handleDenny(solicitud._id)}
+                                                            className="btn-rechazar"
+                                                        >
+                                                            <RiCloseLargeFill /> <span className="btn-text">Rechazar</span>
+                                                        </Button>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan="5" className="text-center">No hay solicitudes pendientes</td>
                                             </tr>
-                                        ))}
+                                        )}
                                     </tbody>
                                 </Table>
                             </div>
                         </Col>
                     </Row>
 
-                    {/* Paginación */}
+                    {/* Paginación - Solo se muestra si hay más de una página */}
+                    {totalPages > 0 && (
                         <Row>
                             <Col className="d-flex justify-content-end">
                                 <Pagination className="custom-pagination">
@@ -169,6 +178,7 @@ const SolicitudesPendientes = () => {
                                 </Pagination>
                             </Col>
                         </Row>
+                    )}
                 </div>
             </Container>
             <ToastContainer />

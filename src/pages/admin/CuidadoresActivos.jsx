@@ -15,6 +15,8 @@ const CuidadoresActivos = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+
+    //.
     // Paginación
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10);
