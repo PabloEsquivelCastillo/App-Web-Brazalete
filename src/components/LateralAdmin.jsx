@@ -27,7 +27,8 @@ export default function LateralAdmin() {
         navigate("/login");
     };
 
-    //React boostrap alv, este si sirve
+    //React boostrap alv, este si sireve
+    //.
     return (
         <>
             {isMobile ? (
