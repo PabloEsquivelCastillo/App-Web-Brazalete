@@ -1,1 +1,0 @@
-//Aquí para manejar la lógica del cuidador

@@ -6,9 +6,8 @@ import { AuthProvider } from './context/AuthContext.jsx'
 import "./css/Tablas.css"
 import "./css/Paginacion.css"
 import { Container } from 'react-bootstrap'
-
-
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Importar estilos de Toastify
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +17,7 @@ function App() {
       <Container fluid className="app-container">
         <AuthProvider>
           <AppRoutes />
+          <ToastContainer position="top-right" autoClose={5000} />
         </AuthProvider>
       </Container>
     </>
