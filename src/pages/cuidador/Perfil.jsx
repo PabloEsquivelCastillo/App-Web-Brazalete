@@ -6,13 +6,12 @@ import axiosInstance from "../../api/axiosConfig";
 import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar";
 import LateralCuidador from "../../components/LateralCuidador";
+import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import "../../css/Perfil.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Perfil() {
-
     const navigate = useNavigate();
-
     const { user } = useAuth(); 
     const [loading, setLoading] = useState(true);
     const [initialValues, setInitialValues] = useState({
@@ -32,7 +31,6 @@ export default function Perfil() {
     });
 
     useEffect(() => {
-        
         if (!user?.id) {
             console.error("ID de usuario no encontrado");
             setLoading(false);
@@ -41,7 +39,7 @@ export default function Perfil() {
     
         const cargarDatosUsuario = async () => {
             try {
-                const response = await axiosInstance.get(`/users/${user.id}`);
+                const response = await axiosInstance.get(`/user/${user.id}`);
                 setInitialValues(response.data); 
             } catch (error) {
                 console.error("Error al cargar los datos del usuario:", error);
@@ -63,40 +61,77 @@ export default function Perfil() {
         }
     };
 
-    if (loading) return <p>Cargando datos del usuario...</p>;
+    if (loading) return (
+        <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+            <Spinner animation="border" variant="success" />
+            <span className="ms-2">Cargando datos del usuario...</span>
+        </div>
+    );
 
     return (
         <>
             <Navbar />
             <LateralCuidador />
-            <div className="perfil-container">
-                <h1 className="perfil-header">Editar Perfil</h1>
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={handleSubmit}
-                    enableReinitialize
-                >
-                    {({ isSubmitting }) => (
-                        <Form>
-                            <div className="mb-3">
-                                <label htmlFor="name" className="perfil-label">Nombre completo</label>
-                                <Field type="text" name="name" className="perfil-input" autoComplete="off" />
-                                <ErrorMessage name="name" component="div" className="text-danger" />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="phone" className="perfil-label">Teléfono</label>
-                                <Field type="text" name="phone" className="perfil-input" autoComplete="off" />
-                                <ErrorMessage name="phone" component="div" className="text-danger" />
-                            </div>
-                            <button className="perfil-button" type="submit" disabled={isSubmitting}>
-                                {isSubmitting ? "Actualizando..." : "Actualizar Datos"}
-                            </button>
-                            <p onClick={() => navigate("/cuidador/contraseña")}>Cambiar Contraseña</p>
-                        </Form>
-                    )}
-                </Formik>
-            </div>
+            <Container fluid>
+                <Row className="justify-content-center">
+                    <Col xs={12} sm={10} md={8} lg={6} xl={5} className="perfil-container">
+                        <h1 className="perfil-header">Editar Perfil</h1>
+                        <Formik
+                            initialValues={initialValues}
+                            validationSchema={validationSchema}
+                            onSubmit={handleSubmit}
+                            enableReinitialize
+                        >
+                            {({ isSubmitting }) => (
+                                <Form className="px-3 px-md-4">
+                                    <div className="mb-3">
+                                        <label htmlFor="name" className="perfil-label">Nombre completo</label>
+                                        <Field 
+                                            type="text" 
+                                            name="name" 
+                                            className="perfil-input" 
+                                            autoComplete="off" 
+                                        />
+                                        <ErrorMessage 
+                                            name="name" 
+                                            component="div" 
+                                            className="text-danger text-start ms-4" 
+                                        />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="phone" className="perfil-label">Teléfono</label>
+                                        <Field 
+                                            type="text" 
+                                            name="phone" 
+                                            className="perfil-input" 
+                                            autoComplete="off" 
+                                        />
+                                        <ErrorMessage 
+                                            name="phone" 
+                                            component="div" 
+                                            className="text-danger text-start ms-4" 
+                                        />
+                                    </div>
+                                    <Button 
+                                        type="submit" 
+                                        className="perfil-button" 
+                                        disabled={isSubmitting}
+                                    >
+                                        {isSubmitting ? "Actualizando..." : "Actualizar Datos"}
+                                    </Button>
+                                    <p 
+                                        className="mt-4 cursor-pointer" 
+                                        onClick={() => navigate("/cuidador/contraseña")}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        Cambiar Contraseña
+                                    </p>
+                                </Form>
+                            )}
+                        </Formik>
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 }

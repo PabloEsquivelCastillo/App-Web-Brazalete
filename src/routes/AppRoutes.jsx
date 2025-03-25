@@ -16,6 +16,7 @@ import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
 import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
 import Contraseña from '../pages/cuidador/Contraseña';
+import RestablecerPassword from '../pages/resetPassword';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -27,8 +28,7 @@ function AppRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Registro/>}></Route>
         <Route path="/recuperar" element={<Recuperar/>}></Route>
-
-
+        <Route path='/reset-password/:token' element={<RestablecerPassword/>}/>
 
 
         {/* Rutas protegidas para admin */}
