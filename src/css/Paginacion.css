@@ -6,9 +6,11 @@
     --color-texto: #333;
 }
 
+/*Clavar la paginacion*/
+
 .custom-pagination {
     display: flex;
-    
+    overflow: visible;
     align-items: center;
 }
 
@@ -23,11 +25,12 @@
 }
 
 .custom-pagination .page-link:hover {
-    color: var(--color-primario);
+    color: #ffffff;
     background-color: transparent;
 }
 
 .custom-pagination .page-item.active .page-link {
+    background-color: var(--color-fondo);
     color: var(--color-primario-fuerte);
     font-weight: bold;
     background-color: transparent;
@@ -42,6 +45,6 @@
 }
 
 .custom-pagination .page-item.disabled .page-link {
-    color: var(--color-secundario);
-    cursor: not-allowed;
+    color: white;
+    background-color: white;
 }

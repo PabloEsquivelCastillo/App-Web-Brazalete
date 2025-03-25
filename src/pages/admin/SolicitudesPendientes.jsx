@@ -9,6 +9,7 @@ import { aceptarSolicitudes, getSolicitudes, rechazarSolicitud } from "../../Log
 import { Container, Row, Col, Table, Button, Pagination } from 'react-bootstrap';
 import '../../css/Tablas.css';
 import '../../css/Paginacion.css';
+import Navbar from "../../components/Navbar";
 
 const SolicitudesPendientes = () => {
     const [solicitudes, setSolicitudes] = useState([]);
@@ -88,6 +89,7 @@ const SolicitudesPendientes = () => {
 
     return (
         <>
+        <Navbar/>
             <LateralAdmin />
             <Container fluid className="mt-4 d-flex justify-content-center">
                 <div className="contenedor">
@@ -146,7 +148,6 @@ const SolicitudesPendientes = () => {
                     </Row>
 
                     {/* Paginación */}
-                    <Container fluid>
                         <Row>
                             <Col className="d-flex justify-content-end">
                                 <Pagination className="custom-pagination">
@@ -168,7 +169,6 @@ const SolicitudesPendientes = () => {
                                 </Pagination>
                             </Col>
                         </Row>
-                    </Container>
                 </div>
             </Container>
             <ToastContainer />
