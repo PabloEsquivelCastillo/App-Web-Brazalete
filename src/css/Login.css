@@ -1,147 +1,97 @@
-/* Definir colores principales */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 :root {
-  --color-primario: #70DFA7;
-  --color-secundario: #D4D4D4;
-  --color-fondo: #ffffff;
+    --color-primario: #70DFA7;
+    --color-primario-fuerte: hsl(150, 52%, 59%);
+    --color-primario-claro: hsl(150, 71%, 76%);
+    --color-secundario: #D4D4D4;
+    --color-fondo: #ffffff;
+    --color-texto: #333;
 }
-
-
-#root {
-  width: 100vh;
+/* Estilos generales */
+.login-page {
+  background-color: #f8f9fa;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-fondo);
-}
-
-.container{
-  width: 100vh ;
+  width: 100vh;
 }
 
 .login-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  max-width: 800px;
   background-color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
   overflow: hidden;
-  font-family: "Poppins", sans-serif;
+  max-width: 800px;
+  width: 100%;
 }
-
-
-
-/*media para resposividad*/
-@media (min-width: 768px) {
-  .login-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 
 .login-form {
   padding: 40px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  font-family: "Poppins", sans-serif;
-  
 }
-
-
-
 
 .login-title {
-  text-align: start;
-  color: black;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
 }
 
-
-.form-label{
-  text-align: start;
-}
-
+/* Campos del formulario */
 .form-control {
-  width: 100%;
-  background-color: white; /* Fondo blanco */
-  border: 1px solid black !important; /* Borde negro */
+  border: 1px solid #ced4da !important;
   border-radius: 5px;
   padding: 10px;
-  color: black; /* Texto negro */
   transition: border-color 0.3s ease;
-
 }
 
-/* Cambia el borde a verde cuando el usuario hace clic o escribe */
 .form-control:focus {
-  border-color: var(--color-primario);
-  outline: none;
+  border-color: var(--color-primario) !important;
   box-shadow: 0 0 5px rgba(112, 223, 167, 0.5);
 }
 
-
-/*Contenedor del boton*/
-.button-container{
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.submit-button {
-  align-self: center;
-  width: 50%;
-  background-color: var(--color-primario);
-  border: none;
-  color: black;
+/* Botón de Iniciar Sesión */
+.btn-login {
+  background-color: var(--color-primario) !important;
+  border: none !important;
+  color: black !important;
+  font-weight: 500;
+  padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
-
 .submit-button:hover {
-  background-color: #5ac896;
+  background-color: #5ac896 !important;
 }
 
-
-
-/*parte derecha del formulario*/
-.login-banner {
-  background-color: var(--color-secundario);
-}
-
-
-/*Contenedor de los links*/
-.down {
-  display: flex;
-  flex-direction: column; /* Alinear en columna */
-  align-items: center; /* Centrar los elementos */
-  gap: 10px; /* Espaciado entre los elementos */
-}
-
-.link-group {
-  display: flex; /* Poner los dos últimos en la misma línea */
-  gap: 10px; /* Espaciado entre los enlaces */
-}
-
+/* Enlaces */
 .link {
-  color: black;
-  font-weight: 400;
-  opacity: 70%;
+  color: #333;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .link:hover {
-  opacity: 100%;
-  color: #30ac6e;
+  color: #70DFA7;
 }
 
-.text-link{
-  color: black;
-  font-weight: 400;
-  opacity: 70%;
-  text-decoration: none;
+.text-link {
+  color: #333;
+  opacity: 0.7;
+}
+
+/* Banner (Parte Derecha) */
+.login-banner {
+  background-color: var(--color-primario-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volver-btn{
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: black !important;
+}
+
+.volver-btn:hover{
+  color: #5ac896 !important;
 }
 

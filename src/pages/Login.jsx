@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext'; // Usamos el contexto de autenticación
 import { jwtDecode } from 'jwt-decode';
+import { Container, Row, Col, Form as BootstrapForm, Button, Alert } from 'react-bootstrap';
 import '../css/Login.css';
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // Función login del contexto
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email('Correo electrónico inválido')
       .required('El correo electrónico es requerido'),
     password: Yup.string()
-      .min(1, 'La contraseña debe tener al menos 6 caracteres')
+      .min(6, 'La contraseña debe tener al menos 6 caracteres')
       .required('La contraseña es requerida'),
   });
 
@@ -24,11 +25,33 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3000/login', values);
       const token = response.data.token;
+
+      if (!token) {
+        setErrors({ form: 'Token no recibido. Intenta de nuevo.' });
+        return;
+      }
+
+      // Guarda el token en el contexto de autenticación
       login(token);
 
+      // Decodifica el token
       const decodedToken = jwtDecode(token);
       const userRole = decodedToken.rol;
+      const edoUser = decodedToken.edo; // Estado del usuario (true o false)
+      const edoReq = decodedToken.edoReq;
 
+      // Verificar si el usuario está activo
+      if (!edoUser) {
+        setErrors({ form: 'Usuario dado de baja. Contacta al administrador.' });
+        return;
+      }
+
+      if (Number(edoReq) === 0) {
+        setErrors({ form: 'Espera a que el administrador acepte tu solicitud' });
+        return;
+      }
+
+      // Redirigir según el rol del usuario
       if (userRole === 'admin') {
         navigate('/admin/dashboard');
       } else if (userRole === 'keeper') {
@@ -40,7 +63,6 @@ function Login() {
       setErrors({ form: 'Error al iniciar sesión. Verifica tus credenciales.' });
       console.error(err);
     } finally {
-      
       setSubmitting(false);
     }
   };
@@ -51,47 +73,75 @@ function Login() {
   }, []);
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="row login-container">
-        <div className="col-md-6 login-form">
-          <h1 className='login-title'>Inicia sesión</h1>
+    <Container fluid className="login-page d-flex justify-content-center align-items-center">
+      <Row className="login-container shadow-lg">
+        {/* Formulario de Login */}
+        <Col md={6} className="login-form p-4">
+          <h1 className="login-title text-center mb-4">Inicia sesión</h1>
           <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={handleSubmit}>
             {({ isSubmitting, errors }) => (
               <Form>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Correo electrónico</label>
-                  <Field type="email" name="email" className="form-control" autoComplete="off" />
+                {/* Campo de Correo Electrónico */}
+                <BootstrapForm.Group className="mb-3">
+                  <BootstrapForm.Label>Correo electrónico</BootstrapForm.Label>
+                  <Field
+                    type="email"
+                    name="email"
+                    as={BootstrapForm.Control}
+                    placeholder="Ingresa tu correo electrónico"
+                    autoComplete="off"
+                  />
                   <ErrorMessage name="email" component="div" className="text-danger" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Contraseña</label>
-                  <Field type="password" name="password" className="form-control" autoComplete="off" />
+                </BootstrapForm.Group>
+
+                {/* Campo de Contraseña */}
+                <BootstrapForm.Group className="mb-3">
+                  <BootstrapForm.Label>Contraseña</BootstrapForm.Label>
+                  <Field
+                    type="password"
+                    name="password"
+                    as={BootstrapForm.Control}
+                    placeholder="Ingresa tu contraseña"
+                    autoComplete="off"
+                  />
                   <ErrorMessage name="password" component="div" className="text-danger" />
-                </div>
-                {errors.form && <div className="alert alert-danger">{errors.form}</div>}
-                <div className='button-container'>
-                  <button type="submit" className="submit-button" disabled={isSubmitting}>
+                </BootstrapForm.Group>
+
+                {/* Mensaje de Error General */}
+                {errors.form && <Alert variant="danger">{errors.form}</Alert>}
+
+                {/* Botón de Iniciar Sesión */}
+                <div className="button-container text-center">
+                  <Button
+                    type="submit"
+                    className="btn-login w-50"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
-                  </button>
+                  </Button>
                 </div>
-                <hr className=" border-dark border-1 opacity-50" />
-                <div className='down'>
-                  <a className='link' onClick={()=> navigate("/recuperar")}>Olvidé mi contraseña</a>
-                  <div className='link-group'>
-                    <a className='text-link'>¿No tienes cuenta?</a>
-                    <a className='link' onClick={()=> navigate("/registro")}>Crear ahora</a>
+
+                {/* Enlaces Inferiores */}
+                <hr className="my-4" />
+                <div className="down text-center">
+                  <a onClick={() => navigate("/recuperar")} className="link">Olvidé mi contraseña</a>
+                  <div className="link-group mt-2">
+                    <span className="text-link">¿No tienes cuenta?</span>
+                    <a onClick={() => navigate("/registro")} className="link ms-1">Crear ahora</a>
                   </div>
                 </div>
               </Form>
             )}
           </Formik>
-        </div>
-        <div className="col-md-6 login-banner"></div>
+        </Col>
 
-      </div>
-    </div>
+        {/* Banner (Parte Derecha) */}
+        <Col md={6} className="login-banner d-none d-md-block">
+          {/* Aquí puedes agregar una imagen o contenido adicional */}
+        </Col>
+      </Row>
+    </Container>
   );
-
 }
 
 export default Login;

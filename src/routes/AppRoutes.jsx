@@ -6,13 +6,17 @@ import { useAuth } from '../context/AuthContext';
 import CuidadoresActivos from '../pages/admin/CuidadoresActivos';
 import Solicitudes from '../pages/admin/SolicitudesPendientes';
 import EditarCuidador from '../pages/admin/EditarCuidador';
-import SolicitudesPendientes from '../pages/admin/SolicitudesPendientes';
+import RegistrarMedicamento from '../pages/admin/RegistrarMedicamentos';
+import Medicamentos from '../pages/admin/MedicamentosAdmin';
+import EditarMedicamento from '../pages/admin/EditarMedicamento';
 import Registro from '../pages/Registro';
+import Recuperar from '../pages/Recuperar';
 import Perfil from '../pages/cuidador/Perfil';
 import MedicamentosCuidador from '../pages/cuidador/Medicamentos';
 import Brazalete from '../pages/cuidador/Brazaletes';
 import Recordatorios from '../pages/cuidador/Recordatorios';
-import Recuperar from '../pages/Recuperar';
+import Contraseña from '../pages/cuidador/Contraseña';
+import RestablecerPassword from '../pages/resetPassword';
 
 function AppRoutes() {
   const { user } = useAuth(); // Obtener el usuario del contexto de autenticación
@@ -24,25 +28,31 @@ function AppRoutes() {
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Registro/>}></Route>
         <Route path="/recuperar" element={<Recuperar/>}></Route>
+        <Route path='/reset-password/:token' element={<RestablecerPassword/>}/>
 
 
         {/* Rutas protegidas para admin */}
         {user?.rol === 'admin' && (
           <>
-            <Route path="/admin/dashboard" element={<SolicitudesPendientes />} />
+            <Route path="/admin/dashboard" element={<CuidadoresActivos />} />
             <Route path="/admin/cuidadoresActivos" element={<CuidadoresActivos />} />
             <Route path="/admin/solicitudes" element={<Solicitudes />} />
             <Route path="/admin/editar/:id" element={<EditarCuidador />} />
+            <Route path="/admin/Medicamentos" element={<Medicamentos />} />
+            <Route path="/admin/RegistrarMedicamento" element={<RegistrarMedicamento />} />
+            <Route path="/admin/EditarMedicamento/:id" element={<EditarMedicamento />} />
           </>
         )}
 
        {/* Rutas protegidas para cuidador */}
        {user?.rol === 'keeper' && (
           <>
-            <Route path="/cuidador/perfil" element={<Perfil />} />
-            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador />} />
+            <Route path="/cuidador/perfil" element={<Perfil/>} />
+            <Route path="/cuidador/Medicamentos" element={<MedicamentosCuidador/>} />
             <Route path="/cuidador/Brazaletes" element={<Brazalete/>} />
             <Route path="/cuidador/Recordatorios" element={<Recordatorios/>} />
+            <Route path="/cuidador/Contraseña" element={<Contraseña/>} />
+
           </>
         )}   
 
