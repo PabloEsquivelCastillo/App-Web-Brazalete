@@ -3,7 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { User, UserCheck, Pill, BellRing, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Dropdown, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Dropdown, Container, Nav, NavDropdown } from "react-bootstrap";
+import Navbar from "../components/Navbar";
 
 export default function LateralAdmin() {
     let navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function LateralAdmin() {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 925); // Cambia a navbar en pantallas pequeñas
+            setIsMobile(window.innerWidth <= 1100); // Cambia a navbar en pantallas pequeñas
         };
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -23,52 +24,10 @@ export default function LateralAdmin() {
     return (
         <>
             {isMobile ? (
-                // Navbar en pantallas pequeñas 📱
-                <Navbar expand="lg" className="mobile-navbar">
-                    <Container>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar id="basic-navbar-nav">
-                            <Nav className="me-auto justify-content-center">
-                                <Nav.Link onClick={() => navigate("/admin/solicitudes")}>
-                                    <User size={20} /> Solicitudes
-                                </Nav.Link>
-                                <Nav.Link onClick={() => navigate("/admin/dashboard")}>
-                                    <UserCheck size={20} /> Cuidadores
-                                </Nav.Link>
-                                <Nav.Link onClick={() => navigate("/admin/Medicamentos")}>
-                                    <Pill size={20} /> Medicamentos
-                                </Nav.Link>
-                                <Nav.Link href="#">
-                                    <BellRing size={20} /> Recordatorios
-                                </Nav.Link>
-                                <Dropdown className="admin-dropdown" drop="start">
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
-                                        Admin
-                                    </Dropdown.Toggle>
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item className='logout' onClick={() => navigate("/logout")}>
-                                            Cerrar sesión
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Nav>
-                        </Navbar>
-                    </Container>
-                </Navbar>
+                    <Navbar/>
             ) : (
                 // Sidebar en pantallas grandes 🖥️
                 <div className="sidebar">
-                    <Dropdown className="admin-dropdown" drop="end">
-                        <Dropdown.Toggle variant="success" id="dropdown-basic" className='dropdown'>
-                            Admin
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item className='logout' onClick={() => navigate("/logout")}>
-                                Cerrar sesión
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <a className="nav-link" onClick={() => navigate("/admin/solicitudes")}>
@@ -95,7 +54,7 @@ export default function LateralAdmin() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" onClick={() => navigate("/admin/Recordatorios")}>
                                 <div className="nav-content">
                                     <BellRing size={20} />
                                     <span className="nav-text">Recordatorios</span>
