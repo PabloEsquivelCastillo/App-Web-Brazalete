@@ -1,9 +1,9 @@
-import '../css/LateralCuidador.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { User, UserCheck, Pill, BellRing, Menu, Watch } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Dropdown, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import '../css/LateralAdmin.css';
 
 export default function LateralCuidador() {
     let navigate = useNavigate();
