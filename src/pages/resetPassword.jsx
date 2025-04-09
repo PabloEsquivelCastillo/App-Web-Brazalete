@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axiosInstance from '../api/axiosConfig';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../css/recuperar.css'; // Asegúrate de que la ruta sea correcta
 
 export default function RestablecerPassword() {
   const navigate = useNavigate();
   const { token } = useParams();
   const [tokenValido, setTokenValido] = useState(true);
-  
-  useEffect(() => {
-    console.log("Token recibido en el componente:", token);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  useEffect(() => {
     const decodedToken = decodeURIComponent(token);
     console.log("Token recibido (posiblemente decodificado):", decodedToken);
     
-    // Opcional: Verificar validez del token antes de mostrar el formulario
     if (!token) {
       setTokenValido(false);
       toast.error("Token de restablecimiento no proporcionado");
@@ -59,22 +59,32 @@ export default function RestablecerPassword() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   if (!tokenValido) {
     return (
-      <div className="perfil-container">
-        <h1 className="perfil-header">Error de Restablecimiento</h1>
-        <p>El enlace de restablecimiento no es válido o ha expirado.</p>
-        <button className="perfil-button" onClick={() => navigate('/recuperar')}>
-          Solicitar nuevo enlace
-        </button>
+      <div className="recover-password-container">
+        <div className="recover-password-card">
+          <h1 className="recover-password-title">Error de Restablecimiento</h1>
+          <p className="recover-password-subtitle">El enlace de restablecimiento no es válido o ha expirado.</p>
+          <button className="recover-password-button" onClick={() => navigate('/recuperar')}>
+            Solicitar nuevo enlace
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <>
-      <div className="perfil-container">
-        <h1 className="perfil-header">Restablecer Contraseña</h1>
+    <div className="recover-password-container">
+      <div className="recover-password-card">
+        <h1 className="recover-password-title">Restablecer Contraseña</h1>
         <Formik
           initialValues={{ newPassword: '', confirmPassword: '' }}
           validationSchema={validationSchema}
@@ -82,23 +92,43 @@ export default function RestablecerPassword() {
         >
           {({ isSubmitting }) => (
             <Form>
-              <div className="mb-3">
-                <label htmlFor="newPassword" className="perfil-label">Nueva contraseña</label>
-                <Field type="password" name="newPassword" className="perfil-input" />
+              <div className="recover-password-input-group">
+                <label htmlFor="newPassword" className="recover-password-label">Nueva contraseña</label>
+                <div className="input-container">
+                  <Field 
+                    type={showPassword ? "text" : "password"} 
+                    name="newPassword" 
+                    className="recover-password-input" 
+                  />
+                  <i 
+                    className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`} 
+                    onClick={togglePasswordVisibility}
+                  ></i>
+                </div>
                 <ErrorMessage name="newPassword" component="div" className="text-danger" />
               </div>
-              <div className="mb-3">
-                <label htmlFor="confirmPassword" className="perfil-label">Confirmar nueva contraseña</label>
-                <Field type="password" name="confirmPassword" className="perfil-input" />
+              <div className="recover-password-input-group">
+                <label htmlFor="confirmPassword" className="recover-password-label">Confirmar nueva contraseña</label>
+                <div className="input-container">
+                  <Field 
+                    type={showConfirmPassword ? "text" : "password"} 
+                    name="confirmPassword" 
+                    className="recover-password-input" 
+                  />
+                  <i 
+                    className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`} 
+                    onClick={toggleConfirmPasswordVisibility}
+                  ></i>
+                </div>
                 <ErrorMessage name="confirmPassword" component="div" className="text-danger" />
               </div>
-              <button className="perfil-button" type="submit" disabled={isSubmitting}>
+              <button className="recover-password-button" type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Actualizando..." : "Restablecer Contraseña"}
               </button>
             </Form>
           )}
         </Formik>
       </div>
-    </>
+    </div>
   );
 }

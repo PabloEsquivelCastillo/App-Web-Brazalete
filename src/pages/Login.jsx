@@ -3,14 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { useAuth } from '../context/AuthContext'; // Usamos el contexto de autenticación
+import { useAuth } from '../context/AuthContext'; 
 import { jwtDecode } from 'jwt-decode';
 import { Container, Row, Col, Form as BootstrapForm, Button, Alert } from 'react-bootstrap';
 import '../css/Login.css';
+import brazalete from '../img/brazalete.png'; 
+
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth(); // Función login del contexto
+  const { login } = useAuth(); 
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -31,16 +33,14 @@ function Login() {
         return;
       }
 
-      // Guarda el token en el contexto de autenticación
       login(token);
 
-      // Decodifica el token
       const decodedToken = jwtDecode(token);
       const userRole = decodedToken.rol;
-      const edoUser = decodedToken.edo; // Estado del usuario (true o false)
+      const edoUser = decodedToken.edo; 
       const edoReq = decodedToken.edoReq;
+      const id = decodedToken._id;
 
-      // Verificar si el usuario está activo
       if (!edoUser) {
         setErrors({ form: 'Usuario dado de baja. Contacta al administrador.' });
         return;
@@ -51,7 +51,6 @@ function Login() {
         return;
       }
 
-      // Redirigir según el rol del usuario
       if (userRole === 'admin') {
         navigate('/admin/dashboard');
       } else if (userRole === 'keeper') {
@@ -75,13 +74,11 @@ function Login() {
   return (
     <Container fluid className="login-page d-flex justify-content-center align-items-center">
       <Row className="login-container shadow-lg">
-        {/* Formulario de Login */}
         <Col md={6} className="login-form p-4">
           <h1 className="login-title text-center mb-4">Inicia sesión</h1>
           <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={handleSubmit}>
             {({ isSubmitting, errors }) => (
               <Form>
-                {/* Campo de Correo Electrónico */}
                 <BootstrapForm.Group className="mb-3">
                   <BootstrapForm.Label>Correo electrónico</BootstrapForm.Label>
                   <Field
@@ -94,7 +91,6 @@ function Login() {
                   <ErrorMessage name="email" component="div" className="text-danger" />
                 </BootstrapForm.Group>
 
-                {/* Campo de Contraseña */}
                 <BootstrapForm.Group className="mb-3">
                   <BootstrapForm.Label>Contraseña</BootstrapForm.Label>
                   <Field
@@ -107,10 +103,8 @@ function Login() {
                   <ErrorMessage name="password" component="div" className="text-danger" />
                 </BootstrapForm.Group>
 
-                {/* Mensaje de Error General */}
                 {errors.form && <Alert variant="danger">{errors.form}</Alert>}
 
-                {/* Botón de Iniciar Sesión */}
                 <div className="button-container text-center">
                   <Button
                     type="submit"
@@ -121,13 +115,12 @@ function Login() {
                   </Button>
                 </div>
 
-                {/* Enlaces Inferiores */}
                 <hr className="my-4" />
                 <div className="down text-center">
-                  <a onClick={() => navigate("/recuperar")} className="link">Olvidé mi contraseña</a>
+                  <a href='/recuperar' className="link">Olvidé mi contraseña</a>
                   <div className="link-group mt-2">
                     <span className="text-link">¿No tienes cuenta?</span>
-                    <a onClick={() => navigate("/registro")} className="link ms-1">Crear ahora</a>
+                    <a href='/registro' className="link ms-1">Crear ahora</a>
                   </div>
                 </div>
               </Form>
@@ -135,10 +128,11 @@ function Login() {
           </Formik>
         </Col>
 
-        {/* Banner (Parte Derecha) */}
-        <Col md={6} className="login-banner d-none d-md-block">
-          {/* Aquí puedes agregar una imagen o contenido adicional */}
-        </Col>
+
+          <Col md={6} className="login-banner d-none d-md-block">
+            <img src={brazalete} alt="Login Banner" className="img-fluid w-100 h-100" />
+
+          </Col>
       </Row>
     </Container>
   );

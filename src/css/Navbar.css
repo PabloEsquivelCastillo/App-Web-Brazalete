@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 :root {
     --color-primario: #70DFA7;
     --color-primario-fuerte: hsl(150, 52%, 59%);
@@ -6,8 +8,14 @@
     --color-texto: #333;
 }
 
-/*Para subir css*/
+/* Para subir css */
+.navbar h2 {
+    margin-left: 40px;
+    font-family: Lobster;
+    font-style: oblique;
+}
 
+/* Navbar */
 .navbar {
     font-family: "Poppins", sans-serif !important;
     font-size: 15px;
@@ -20,24 +28,21 @@
     height: 12%;
     z-index: 1000;
     justify-content: flex-end;
+    display: flex;
+    align-items: center; /* Centrar verticalmente el contenido */
 }
-
-.navbar-brand {
-    font-weight: bold;
-    color: #007bff;
-}
-
 
 /* Estilos para el dropdown */
 .admin-dropdown .dropdown-toggle {
-    background-color: transparent!important;
+    background-color: transparent !important;
     border: none !important;
     margin-right: 20px !important;
     padding: 8px 15px !important;
     transition: all 0.3s ease !important;
+    font-family: 'Lobster', sans-serif !important; /* Aplicar la fuente del h2 al botón */
 }
 
-.admin-dropdown .dropdown-toggle:hover{
+.admin-dropdown .dropdown-toggle:hover {
     color: var(--color-primario) !important;
 }
 
@@ -56,6 +61,11 @@
 }
 
 .admin-dropdown .dropdown-item:hover {
-    color:  black !important;
+    color: black !important;
 }
 
+
+.dropdown{
+    margin-bottom: 20px;
+    right: 40px;
+}

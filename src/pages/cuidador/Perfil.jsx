@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../../context/AuthContext";
 import axiosInstance from "../../api/axiosConfig";
-import { toast } from "react-toastify";
+import { toast } from "react-toastify"; // Asegúrate de que toast esté importado
 import Navbar from "../../components/Navbar";
 import LateralCuidador from "../../components/LateralCuidador";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
@@ -54,11 +54,17 @@ export default function Perfil() {
     const handleSubmit = async (values) => {
         try {
             const response = await axiosInstance.put(`/users/${user.id}`, values);
-            toast.success("Perfil actualizado correctamente");
+            toast.success("Perfil actualizado correctamente");  // Alerta de éxito
         } catch (error) {
             console.error("Error al actualizar el perfil:", error);
-            toast.error("Error al actualizar el perfil");
+            toast.error("Error al actualizar el perfil");  // Alerta de error
         }
+    };
+
+    const handlePhoneChange = (e, setFieldValue) => {
+        // Filtrar solo números
+        const value = e.target.value.replace(/[^0-9]/g, ''); 
+        setFieldValue("phone", value);  // Actualizamos el valor en Formik
     };
 
     if (loading) return (
@@ -82,7 +88,7 @@ export default function Perfil() {
                             onSubmit={handleSubmit}
                             enableReinitialize
                         >
-                            {({ isSubmitting }) => (
+                            {({ isSubmitting, setFieldValue }) => (
                                 <Form className="px-3 px-md-4">
                                     <div className="mb-3">
                                         <label htmlFor="name" className="perfil-label">Nombre completo</label>
@@ -105,6 +111,7 @@ export default function Perfil() {
                                             name="phone" 
                                             className="perfil-input" 
                                             autoComplete="off" 
+                                            onChange={(e) => handlePhoneChange(e, setFieldValue)} // Controla solo números
                                         />
                                         <ErrorMessage 
                                             name="phone" 

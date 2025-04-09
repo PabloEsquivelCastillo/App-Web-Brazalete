@@ -4,9 +4,10 @@
     margin-bottom: 30px;
     background: white;
     padding: 0;
+    width: 800px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    min-height: 600px;
+    min-height: 400px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -34,7 +35,7 @@
 }
 
 .perfil-input {
-    width: 100%;
+    width: 80%;
     padding: 15px;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -51,6 +52,7 @@
 }
 
 .perfil-button {
+    margin-top: 600px;
     width: 70%;
     background-color: #6ed39b !important;
     border: none !important;
@@ -67,7 +69,6 @@
     background-color: #5bb686 !important;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 992px) {
     .perfil-container {
         margin-left: 0;
@@ -82,7 +83,7 @@
     }
     
     .perfil-label {
-        font-size: 16px;
+        font-size: 20px;
         margin: 15px 0 5px;
     }
     
@@ -118,7 +119,6 @@
     }
 }
 
-/* Handling the sidebar layout */
 @media (min-width: 992px) {
     .perfil-container {
         margin-left: 200px;

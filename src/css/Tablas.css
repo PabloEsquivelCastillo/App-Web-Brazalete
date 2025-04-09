@@ -9,6 +9,8 @@
     --color-texto: #333;
 }
 
+
+
 .title{
     font-size: x-large;
 }
@@ -216,4 +218,19 @@ button {
 .btn-eliminar:hover .btn-text,
 .btn-eliminar:hover svg {
     color: rgb(255, 0, 0);
+}
+
+.btn-borderless {
+    border: none;
+    background-color: transparent;
+}
+
+.btn-borderless:hover {
+    opacity: 0.8;
+}
+
+.table-custom {
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
 }

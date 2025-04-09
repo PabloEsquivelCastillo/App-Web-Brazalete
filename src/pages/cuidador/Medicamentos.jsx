@@ -6,11 +6,12 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdNavigateNext } from "react-icons/md";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { RiMedicineBottleLine } from "react-icons/ri";
-import { Container, Row, Col, Table, Pagination, Button } from 'react-bootstrap';
+import { Container, Row, Col, Table, Pagination, Button, Modal } from 'react-bootstrap';
 import "../../css/Tablas.css";
 import "../../css/Paginacion.css";
 import iconMed from '../../assets/iconMed.svg';
 import LateralCuidador from "../../components/LateralCuidador";
+import Navbar from "../../components/Navbar";
 
 
 const MedicamentosCuidador = () => {
@@ -20,7 +21,11 @@ const MedicamentosCuidador = () => {
     const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(7);
+    
+    // Estados para el modal de confirmación
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [selectedMedicamento, setSelectedMedicamento] = useState(null);
 
     useEffect(() => {
         const cargarMedicamentos = () => {
@@ -42,10 +47,16 @@ const MedicamentosCuidador = () => {
         console.log("Editar medicamento con ID:", id);
     };
 
-    const handleDesactivate = (id) => {
-        eliminarMedicamento(id)
-        const actualizarLista = medicamentos.filter(medicamento => medicamento._id !== id);
+    const handleDesactivate = (medicamento) => {
+        setSelectedMedicamento(medicamento);
+        setShowDeleteModal(true);
+    };
+    
+    const handleDelete = () => {
+        eliminarMedicamento(selectedMedicamento._id);
+        const actualizarLista = medicamentos.filter(medicamento => medicamento._id !== selectedMedicamento._id);
         setMedicamentos(actualizarLista);
+        setShowDeleteModal(false);
     };
 
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -79,6 +90,7 @@ const MedicamentosCuidador = () => {
 
     return (
         <>
+            <Navbar/>
             <LateralCuidador />
             <Container fluid className=" d-flex ">
                 <div className="contenedor">
@@ -108,7 +120,6 @@ const MedicamentosCuidador = () => {
                                 <Table className="table-custom">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Nombre genérico</th>
                                             <th>Descripción</th>
                                             <th>Acciones</th>
@@ -117,7 +128,6 @@ const MedicamentosCuidador = () => {
                                     <tbody>
                                         {currentMedicamentos.map((medicamento, index) => (
                                             <tr key={medicamento._id}>
-                                                <td>{indexOfFirstItem + index + 1}</td>
                                                 <td>{medicamento.nombre}</td>
                                                 <td>{medicamento.description}</td>
                                                 <td>
@@ -132,7 +142,7 @@ const MedicamentosCuidador = () => {
                                                     <Button
                                                         variant="none"
                                                         size="sm"
-                                                        onClick={() => handleDesactivate(medicamento._id)}
+                                                        onClick={() => handleDesactivate(medicamento)}
                                                         className="btn-eliminar"
                                                     >
                                                         <MdDeleteOutline /> <span className="btn-text">Eliminar</span>
@@ -169,6 +179,24 @@ const MedicamentosCuidador = () => {
                             </Col>
                         </Row>
                     </Container>
+                    
+                    {/* Confirmación de Eliminación */}
+                    <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Confirmar Eliminación</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            ¿Está seguro que desea eliminar el medicamento {selectedMedicamento?.nombre}?
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" className="d-flex align-items-center gap-2 add-medicamento-btn" onClick={() => setShowDeleteModal(false)}>
+                                Cancelar
+                            </Button>
+                            <Button variant="secondary" className="d-flex align-items-center gap-2 add-medicamento-btn" onClick={handleDelete}>
+                                Eliminar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </Container>
         </>

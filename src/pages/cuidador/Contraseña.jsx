@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 import Navbar from "../../components/Navbar";
 import LateralCuidador from "../../components/LateralCuidador";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
-import "../../css/Perfil.css"; 
+import "../../css/Contraseña.css"; 
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
+
 
 export default function Contraseña() {
   const navigate = useNavigate();
@@ -59,9 +61,11 @@ export default function Contraseña() {
       <Navbar />
       <LateralCuidador />
       <Container fluid>
+      
         <Row className="justify-content-center">
           <Col xs={12} sm={10} md={8} lg={6} xl={5} className="perfil-container" style={{ minHeight: "auto", paddingBottom: "30px" }}>
             <h1 className="perfil-header">Cambiar Contraseña</h1>
+            
             <Formik
               initialValues={{ oldPassword: "", newPassword: "", confirmPassword: "" }}
               validationSchema={validationSchema}

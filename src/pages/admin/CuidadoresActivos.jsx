@@ -19,7 +19,7 @@ const CuidadoresActivos = () => {
     //.
     // Paginación
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(7);
 
     useEffect(() => {
         const cargarCuidadores = async () => {

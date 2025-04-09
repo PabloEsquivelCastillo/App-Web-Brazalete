@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 import AppRoutes from './routes/AppRoutes'
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importar Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { AuthProvider } from './context/AuthContext.jsx'
 import "./css/Tablas.css"
 import "./css/Paginacion.css"
 import { Container } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // Importar estilos de Toastify
+import 'react-toastify/dist/ReactToastify.css'; 
 
 function App() {
   const [count, setCount] = useState(0)

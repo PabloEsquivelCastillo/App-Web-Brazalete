@@ -15,4 +15,5 @@ export const actualizarCuidador = async (id, data) => {
         throw error;
     }
 };
-  
+
+

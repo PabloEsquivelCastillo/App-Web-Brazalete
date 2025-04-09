@@ -20,6 +20,9 @@ import RestablecerPassword from '../pages/resetPassword';
 import EditarMedicamentoCuidador from '../pages/cuidador/EditarMedicamento';
 import RegistrarMedicamentoCuidador from '../pages/cuidador/RegistrarMedicamentos';
 import RecordatoriosAdmin from '../pages/admin/RecordatoriosAdmin';
+import RecordatoriosCuidador from '../pages/cuidador/Recordatorios';
+import EditarRecordatorio from '../pages/cuidador/editarRecordatorio';
+import RegistrarRecordatorio from '../pages/cuidador/crearRecordatorio';
 
 function AppRoutes() {
   const { user } = useAuth(); 
@@ -61,6 +64,13 @@ function AppRoutes() {
             <Route path="/cuidador/Medicamentos" element={<Medicamentos />} />
             <Route path="/cuidador/RegistrarMedicamento" element={<RegistrarMedicamentoCuidador />} />
             <Route path="/cuidador/EditarMedicamento/:id" element={<EditarMedicamentoCuidador />} />
+            <Route path="/cuidador/Recordatorios" element={<RecordatoriosCuidador/>} />
+            <Route path="/cuidador/editarRecordatorio/:id" element={<EditarRecordatorio/>} />
+            <Route path="/cuidador/RegistrarRecordatorio" element={<RegistrarRecordatorio/>} />
+            <Route path="/cuidador/brazalete/" element={<Brazalete/>} />
+
+
+            
 
           </>
         )}   
