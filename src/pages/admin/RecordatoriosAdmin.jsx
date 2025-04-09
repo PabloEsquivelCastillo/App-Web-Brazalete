@@ -28,13 +28,9 @@ const RecordatoriosAdmin = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(10);
-<<<<<<< HEAD
 
     const [showPDFModal, setShowPDFModal] = useState(false);
 
-=======
-    //.
->>>>>>> origin/juan-dev
     useEffect(() => {
         const cargarRecordatorios = async () => {
             obtenerRecordatorios()
